@@ -1,0 +1,65 @@
+[
+ {
+  "date": "2026-11-14",
+  "template": "quote",
+  "fields": {
+   "quote": "Good things are still finding their way to you.",
+   "support": "Not everything you hope for is late. Some of it is simply on the way."
+  },
+  "caption": "A small reminder for the waiting seasons. Hope doesn't need a deadline to be real."
+ },
+ {
+  "date": "2026-11-15",
+  "template": "quote",
+  "fields": {
+   "quote": "You are doing better than you think.",
+   "support": "The progress you can't see yet still counts. Quiet effort adds up."
+  },
+  "caption": "Most growth happens out of view. Give yourself credit for the days that only looked ordinary."
+ },
+ {
+  "date": "2026-11-16",
+  "template": "quote",
+  "fields": {
+   "quote": "Today has room for something good.",
+   "support": "Leave a little space in the day. Good moments need somewhere to land."
+  },
+  "caption": "Not every hour needs a plan. Leave one open and see what fills it."
+ },
+ {
+  "date": "2026-11-17",
+  "template": "quote",
+  "fields": {
+   "quote": "Your calm is worth protecting.",
+   "support": "Guard it the way you'd guard anything precious: gently, and every day."
+  },
+  "caption": "Peace is easier to keep than to find again. Protect a little of it today."
+ },
+ {
+  "date": "2026-11-18",
+  "template": "quote",
+  "fields": {
+   "quote": "Small steps still move you forward.",
+   "support": "Slow progress is still progress. Keep the pace that lets you keep going."
+  },
+  "caption": "Big changes are mostly small steps repeated. Take one today and call it enough."
+ },
+ {
+  "date": "2026-11-19",
+  "template": "quote",
+  "fields": {
+   "quote": "There is light in ordinary moments.",
+   "support": "A warm cup, a kind word, an open window. Look for one today."
+  },
+  "caption": "Joy often hides in plain sight. Notice one ordinary thing that feels good today."
+ },
+ {
+  "date": "2026-11-20",
+  "template": "quote",
+  "fields": {
+   "quote": "You are allowed to feel hopeful again.",
+   "support": "Hope can return quietly. Let it, even if it's only a little."
+  },
+  "caption": "If the last while has been heavy, this is your permission to hope again, softly."
+ }
+]

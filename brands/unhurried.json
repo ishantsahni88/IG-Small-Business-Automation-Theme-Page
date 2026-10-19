@@ -1,0 +1,27 @@
+{
+  "name": "Unhurried",
+  "handle": "@unhurried_daily",
+  "tagline": "One quiet thought a day",
+  "family": "quote",
+  "audience": "Busy, overstimulated adults (25-45) who want small, calm moments in a rushed day.",
+  "voice": "Warm, hopeful and grounded. Positive thoughts phrased as gentle, believable reminders in second person, never forced cheerfulness. Short lines that feel like a deep breath.",
+  "pillars": "Positive thoughts to start the day\nGentle affirmations\nSlowing down\nRest without guilt\nPresent moment\nSelf-kindness\nLetting go",
+  "rules": "Every quote is original, 12 words or fewer\nNo medical or mental-health claims; never promise to cure or treat anything\nNo spiritual jargon or hustle language\nNo emojis on the poster text",
+  "ctas": "Save this for the day you need it 🌿\nSend this to someone who needs to slow down 🌿\nWhich line do you need most today? 🌿\nFollow @unhurried_daily for one quiet thought a day 🌿",
+  "hashtags": "#unhurried #slowliving #mindfulness #mindfulnessquotes #innerpeace #calmmind #gentlereminder #selfcare\n#unhurried #mindfulliving #slowdown #peacefulmind #restisproductive #mentalwellbeing #quietmoments #selfcompassion\n#unhurried #mindfulness #breathe #presentmoment #calm #slowlife #dailyreminder #wellbeing",
+  "postTime": "19:45:00",
+  "reelTime": "12:30:00",
+  "timezone": "America/Toronto",
+  "metricoolBlogId": "7195689",
+  "colors": {
+    "ink": "#2B2A28",
+    "paper": "#F3EEE5",
+    "accent": "#8A9A7B",
+    "muted": "#7A766E"
+  },
+  "id": "unhurried",
+  "templates": [
+    "quote"
+  ],
+  "startAfter": "2026-11-13"
+}
