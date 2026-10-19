@@ -30,9 +30,9 @@ def norm(s):
 def used_lines(brand_id):
     p = os.path.join(ROOT, "ledger", f"{brand_id}.csv")
     if not os.path.exists(p):
-        return set()
+        return {}
     with open(p, newline="", encoding="utf-8") as fh:
-        return {norm(r["headline"]) for r in csv.DictReader(fh)}
+        return {norm(r["headline"]): r["date"] for r in csv.DictReader(fh)}
 
 
 def headline(item):
@@ -55,7 +55,6 @@ def lint(item, brand, seen):
         issues.append("caption body missing")
     if t == "quote":
         if words(f.get("quote")) > 12: issues.append("quote longer than 12 words")
-        if not f.get("support") or words(f.get("support")) > 22: issues.append("support line missing or over 22 words")
     elif t == "statement":
         if not re.search(r"\*[^*]+\*", f.get("headline", "")): issues.append("headline needs one *accent* phrase")
         if words(f.get("headline")) > 14: issues.append("headline longer than 14 words")
@@ -66,9 +65,9 @@ def lint(item, brand, seen):
         if words(f.get("title")) > 9: issues.append("title longer than 9 words")
         if not f.get("before") or not f.get("after"): issues.append("before/after missing")
     h = norm(headline(item))
-    if h in seen:
-        issues.append(f"headline already used: {headline(item)}")
-    seen.add(h)
+    if h in seen and seen[h] != item.get("date"):
+        issues.append(f"headline already used on {seen[h]}: {headline(item)}")
+    seen[h] = item.get("date")
     return issues
 
 
@@ -96,11 +95,13 @@ def main(week_path):
     for i, it in enumerate(items):
         rel = f"media/{brand_id}/{it['date']}.jpg"
         render(brand, it, os.path.join(ROOT, rel))
+        import hashlib
+        ver = hashlib.md5(open(os.path.join(ROOT, rel), "rb").read()).hexdigest()[:10]
         dt = f"{it['date']}T{brand.get('postTime', '19:45:00')}"
         ordinal = int(it["date"].replace("-", "")) % 1000  # rotates CTA/hashtag sets day to day
         info = {
             "autoPublish": True, "draft": False, "text": caption(it, brand, ordinal),
-            "providers": [{"network": "instagram"}], "media": [RAW + rel],
+            "providers": [{"network": "instagram"}], "media": [f"{RAW}{rel}?v={ver}"],
             "mediaAltText": [headline(it).replace("*", "")],
             "publicationDate": {"dateTime": dt, "timezone": brand.get("timezone", "America/Toronto")},
             "firstCommentText": "", "descendants": [], "shortener": False, "smartLinkData": {"ids": []},

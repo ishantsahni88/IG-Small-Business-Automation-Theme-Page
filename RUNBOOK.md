@@ -16,7 +16,7 @@ For each brand with a `metricoolBlogId`:
 
 1. **Find the next 7 dates.** Read `ledger/<brand>.csv` and take the 7 days after the last scheduled date. Skip any date already in the ledger. If the ledger is empty, start from the brand's `startAfter` date (or tomorrow).
 2. **Write the week** to `weeks/<brand>/<first-date>.json`, following the brand file's `voice`, `audience`, `pillars` and `rules`:
-   - `quote`: `quote` of 12 words or fewer, original, positive, believable; `support` of 22 words or fewer.
+   - `quote`: `quote` of 12 words or fewer, original, positive and believable. The poster shows only the quote (matching the Canva series), so put any extra thought in the caption.
    - `statement`: `headline` of 14 words or fewer with one `*accent*` phrase; `sub` as one sentence.
    - `workflow`: `industry` (HVAC, PLUMBING, DENTAL, PHYSIO, ROOFING or ANY SMALL BUSINESS), `title` of 9 words or fewer, 3–5 `steps` of 34 characters or fewer, `before` and `after` of 9 words or fewer.
    - `caption`: 2–3 short sentences, with no hashtags and no call to action (both are added automatically).

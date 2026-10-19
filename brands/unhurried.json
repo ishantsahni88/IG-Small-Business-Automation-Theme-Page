@@ -14,10 +14,10 @@
   "timezone": "America/Toronto",
   "metricoolBlogId": "7195689",
   "colors": {
-    "ink": "#2B2A28",
-    "paper": "#F3EEE5",
-    "accent": "#8A9A7B",
-    "muted": "#7A766E"
+    "ink": "#414F3B",
+    "paper": "#F6F2E7",
+    "accent": "#7F8E74",
+    "muted": "#8E8C84"
   },
   "id": "unhurried",
   "templates": [

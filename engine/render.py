@@ -57,32 +57,65 @@ def plain(text):
     return [(w, False) for w in str(text or "").replace("*", "").split()]
 
 
+def _sprig(size, color):
+    """Line-art sprig like the Unhurried Canva template, drawn at 4x and downsampled."""
+    import math
+    S = 4
+    w, h = int(size * 0.62), size
+    im = Image.new("RGBA", (w * S, h * S), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    lw = int(2.0 * S)
+    # stem: gentle curve from bottom-left to top-right
+    pts = [(w * S * (0.30 + 0.38 * t ** 1.3), h * S * (1 - t)) for t in [i / 40 for i in range(41)]]
+    d.line(pts, fill=color, width=lw, joint="curve")
+
+    def leaf(cx, cy, length, angle):
+        a = math.radians(angle)
+        tip = (cx + math.cos(a) * length, cy - math.sin(a) * length)
+        n = (-math.sin(a), -math.cos(a))
+        wid = length * 0.30
+        left, right = [], []
+        for i in range(21):
+            t = i / 20
+            px, py = cx + (tip[0] - cx) * t, cy + (tip[1] - cy) * t
+            bulge = math.sin(math.pi * t) * wid
+            left.append((px + n[0] * bulge, py + n[1] * bulge))
+            right.append((px - n[0] * bulge, py - n[1] * bulge))
+        d.line(left + right[::-1] + [left[0]], fill=color, width=lw, joint="curve")
+        d.line([(cx, cy), (cx + (tip[0] - cx) * 0.8, cy + (tip[1] - cy) * 0.8)], fill=color, width=max(1, lw // 2))
+
+    for i, t in enumerate([0.22, 0.34, 0.45, 0.56, 0.66, 0.76, 0.85]):
+        x, y = pts[int(t * 40)]
+        right = i % 2 == 0
+        leaf(x, y, h * S * (0.25 - 0.016 * i), 28 + 4 * i if right else 152 - 4 * i)
+    tx, ty = pts[-1]
+    leaf(tx, ty + 6 * S, h * S * 0.14, 80)
+    return im.resize((w, h), Image.LANCZOS)
+
+
 def quote(b, f, n=""):
+    """Unhurried quote poster, matching the Canva template: sprig, green serif quote, short rule, small handle."""
     c = b["colors"]
     im = Image.new("RGB", (W, H), c["paper"])
     d = ImageDraw.Draw(im)
-    M = 110
-    for size in (104, 96, 88, 80, 72, 64):
-        qf = F("CormorantGaramond-Medium.ttf", size)
+    M = 120
+    for size in (136, 126, 116, 106, 96, 86):
+        qf = F("InstrumentSerif-Regular.ttf", size)
         ql = balance(plain(f["quote"]), qf, W - 2 * M)
-        if len(ql) <= 5:
+        if len(ql) <= 4:
             break
-    lh = int(size * 1.12)
-    sf = F("CormorantGaramond-MediumItalic.ttf", 40)
-    sl = balance(plain(f.get("support", "")), sf, W - 2 * M - 60)
-    block = len(ql) * lh + 90 + len(sl) * 50
-    y = (H - block) // 2 + 30
-    d.rectangle([W // 2 - 28, y - 46, W // 2 + 28, y - 43], fill=c["accent"])
+    lh = int(size * 1.05)
+    block = len(ql) * lh
+    y = int(H * 0.50 - block / 2)
+    sp = _sprig(290, c["accent"])
+    im.paste(sp, ((W - sp.width) // 2 + 10, y - sp.height - 70), sp)
     for line in ql:
-        t = " ".join(w for w, _ in line)
-        d.text((W / 2, y), t, font=qf, fill=c["ink"], anchor="ma")
+        d.text((W / 2, y), " ".join(w for w, _ in line), font=qf, fill=c["ink"], anchor="ma")
         y += lh
-    y += 90 - (lh - size)
-    for line in sl:
-        d.text((W / 2, y), " ".join(w for w, _ in line), font=sf, fill=c["muted"], anchor="ma")
-        y += 50
-    hf = F("JetBrainsMono-Medium.ttf", 22)
-    d.text((W / 2, H - 112), " ".join((b.get("handle") or b["name"]).upper()), font=hf, fill=c["muted"], anchor="ma")
+    ry = max(y + 70, int(H * 0.765))
+    d.rectangle([W // 2 - 85, ry, W // 2 + 85, ry + 1], fill=c["accent"])
+    hf = F("Inter-Regular.ttf", 26)
+    d.text((W / 2, int(H * 0.9)), (b.get("handle") or b["name"]).lower(), font=hf, fill=c["muted"], anchor="ma")
     return im
 
 
