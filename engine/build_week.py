@@ -75,7 +75,8 @@ def lint(item, brand, seen):
 def caption(item, brand, idx):
     ctas = [x for x in brand["ctas"].split("\n") if x.strip()]
     tags = [x for x in brand["hashtags"].split("\n") if x.strip()]
-    return f"{item['caption'].strip()}\n\n{ctas[idx % len(ctas)]}\n.\n{tags[idx % len(tags)]}"
+    head = headline(item).replace("*", "").strip()
+    return f"{head}\n\n{item['caption'].strip()}\n\n{ctas[idx % len(ctas)]}\n.\n{tags[idx % len(tags)]}"
 
 
 def main(week_path):
