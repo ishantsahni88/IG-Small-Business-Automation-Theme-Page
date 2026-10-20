@@ -5,14 +5,14 @@ Metricool schedules each post from the image's raw GitHub URL.
 
 | Brand file | Page | Metricool brand ID | Poster templates |
 | --- | --- | --- | --- |
-| `brands/unhurried.json` | @unhurried_daily | 7195689 | `quote` (mindfulness positive thoughts) |
+| `brands/unhurried.json` | @unhurried_daily | 7195689 | `quote` (mindfulness positive thoughts). **Weekly run skips this brand**: from Nov 21 the "Unhurried weekly autopilot" in `ishantsahni88/unhurried-media` owns it. |
 | `brands/small-business-automation.json` | @automatesmallbusiness | not connected yet | `workflow`, `workflow`, `statement` (rotating) |
 
 A brand with an empty `metricoolBlogId` is skipped until the ID is filled in.
 
 ## Every week (run on Monday)
 
-For each brand with a `metricoolBlogId`:
+For each brand with a `metricoolBlogId`, except Unhurried (owned by the unhurried-media autopilot):
 
 1. **Find the next 7 dates.** Read `ledger/<brand>.csv` and take the 7 days after the last scheduled date. Skip any date already in the ledger. If the ledger is empty, start from the brand's `startAfter` date (or tomorrow).
 2. **Write the week** to `weeks/<brand>/<first-date>.json`, following the brand file's `voice`, `audience`, `pillars` and `rules`:
