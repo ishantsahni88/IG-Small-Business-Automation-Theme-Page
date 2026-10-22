@@ -1,0 +1,13 @@
+{
+ "id": "ep004-roofing-storm-photos",
+ "date": "2026-10-22",
+ "hook": "Stop driving to every storm call. Let the photo decide who's first.",
+ "keyword": "STORM",
+ "seconds": 30.6,
+ "hook_score": 84.4,
+ "args": {
+  "blogId": "",
+  "date": "2026-10-22T12:30:00",
+  "info": "{\"autoPublish\": true, \"draft\": false, \"descendants\": [], \"firstCommentText\": \"\", \"hasNotReadNotes\": false, \"providers\": [{\"network\": \"instagram\"}], \"media\": [\"https://raw.githubusercontent.com/ishantsahni88/ig-small-business-automation-theme-page/main/media/small-business-automation/reels/ep004-roofing-storm-photos.mp4?v=20261022\"], \"videoThumbnailUrl\": \"https://raw.githubusercontent.com/ishantsahni88/ig-small-business-automation-theme-page/main/media/small-business-automation/reels/ep004-roofing-storm-photos.jpg?v=20261022\", \"mediaAltText\": [], \"shortener\": false, \"smartLinkData\": {\"ids\": []}, \"publicationDate\": {\"dateTime\": \"2026-10-22T12:30:00\", \"timezone\": \"America/Toronto\"}, \"text\": \"Roofers: after a hailstorm, let the photo decide who's first.\\n\\nEvery quote request looks the same until you see it. Each homeowner gets a text asking for a photo, active leaks go straight to your on-call crew, and missing shingles get an inspection slot. Every job lands in your CRM with the photos attached.\\n\\nComment STORM and I'll send you the full workflow.\\n\\n#roofingcontractor #roofingbusiness #stormdamage #contractorlife #automatesmallbusiness\", \"instagramData\": {\"type\": \"REEL\", \"showReelOnFeed\": true, \"isAiGenerated\": false}}"
+ }
+}

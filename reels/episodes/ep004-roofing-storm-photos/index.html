@@ -1,0 +1,160 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+:root{--bg:#0d0e0b;--ink:#f3f1ea;--mute:#8d8b82;--line:#2a2b26;--acc:#ff5a1f;--ok:#c8f03c;--card:#171814}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--bg);color:var(--ink);font-family:Inter,sans-serif}
+.grid{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:90px 90px;opacity:.3}
+.disp{font-family:"Inter Display",Inter,sans-serif;font-weight:800;letter-spacing:-.03em;line-height:.95}
+#bar{position:absolute;left:0;top:0;height:10px;background:var(--acc)}
+#hook{position:absolute;left:70px;top:380px;width:800px;font-size:150px}
+#hook span{display:inline-block}#hook .a{color:var(--acc)}
+#card{position:absolute;overflow:hidden;border:2px solid var(--line)}
+.st{position:absolute;inset:0;padding:44px}
+.lbl{font-size:28px;font-weight:700;letter-spacing:.16em;color:var(--mute);text-transform:uppercase}
+#c0{display:flex;align-items:center;gap:24px;padding:0 44px}
+#c0 .tm{font-size:40px;font-weight:800}
+#c0 .nm{font-size:36px;color:var(--mute);font-weight:600}
+#c0 .chip{margin-left:auto;font-size:28px;font-weight:800;color:var(--bg);background:var(--acc);padding:12px 22px;border-radius:24px;white-space:nowrap}
+.inb .r{display:grid;grid-template-columns:1fr 150px;align-items:center;border-top:2px solid var(--line);padding:24px 0;font-size:36px}
+.inb .r:first-of-type{margin-top:26px}
+.inb .r span{color:#d9d6cc;font-weight:600}.inb .r span b{color:var(--ink);font-weight:800}
+.inb .r i{font-style:normal;font-size:26px;font-weight:800;text-align:center;padding:10px 0;border-radius:20px;color:var(--mute);border:2px solid var(--line)}
+.sms-h{display:flex;align-items:center;gap:20px;border-bottom:2px solid var(--line);padding-bottom:28px}
+.av{width:76px;height:76px;border-radius:50%;background:var(--ok);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:30px;color:var(--bg)}
+.sms-h b{font-size:38px}.sms-h span{display:block;font-size:26px;color:var(--mute);font-weight:600;margin-top:4px}
+.bub{position:absolute;max-width:470px;font-size:36px;font-weight:600;line-height:1.25;padding:24px 30px;border-radius:32px}
+.in{left:44px;background:#26271f;border-bottom-left-radius:8px}
+.out{right:44px;background:var(--ok);color:var(--bg);border-bottom-right-radius:8px;font-weight:800}
+.ts{position:absolute;left:0;right:0;text-align:center;font-size:24px;color:var(--mute);font-weight:600}
+.photo{position:absolute;right:44px;width:330px;height:250px;border-radius:28px;overflow:hidden;border-bottom-right-radius:8px;background:linear-gradient(180deg,#e9e4d8,#cfc8b8)}
+.photo .stain{position:absolute;left:70px;top:50px;width:190px;height:130px;border-radius:48% 52% 40% 60%;background:radial-gradient(ellipse at 45% 45%,#8a7a5c 0 30%,#a89a7a 55%,rgba(168,154,122,0) 72%)}
+.photo .drip{position:absolute;left:158px;top:170px;width:14px;height:34px;border-radius:7px;background:#7d8a96}
+.photo .fn{position:absolute;left:16px;bottom:12px;font-size:20px;font-weight:700;color:rgba(13,14,11,.55)}
+.tri{display:flex;gap:30px;margin-top:30px;align-items:flex-start}
+.tri .photo{position:relative;right:auto;width:300px;height:230px;border-radius:24px;flex:none}
+.tri .tx{font-size:40px;font-weight:800;line-height:1.15}
+.tri .tx span{display:block;font-size:28px;color:var(--mute);font-weight:600;margin-top:10px}
+.tag{margin-top:40px;font-size:64px;text-align:center;padding:30px 0;border-radius:26px;border:3px solid var(--line);color:var(--mute)}
+.job{margin-top:30px;border:2px solid var(--line);border-radius:26px;padding:30px}
+.job .k{font-size:26px;color:var(--mute);font-weight:700;letter-spacing:.12em;margin-top:18px}
+.job .k:first-child{margin-top:0}
+.job .v{font-size:40px;font-weight:800;margin-top:6px}
+.sent{margin-top:30px;font-size:34px;font-weight:800;text-align:center;padding:24px 0;border-radius:22px;border:3px solid var(--line);color:var(--mute)}
+.cal .day{font-size:96px;margin:22px 0 6px}.cal .day em{font-style:normal;color:var(--ok)}
+.cal .slot{display:flex;justify-content:space-between;align-items:center;border-top:2px solid var(--line);padding:26px 0;font-size:38px;font-weight:700}
+.cal .slot em{font-style:normal;font-size:28px;font-weight:800;padding:10px 20px;border-radius:20px;border:2px solid var(--line);color:var(--mute)}
+.crm .r{display:grid;grid-template-columns:62px 1fr 200px;gap:18px;align-items:center;border-top:2px solid var(--line);padding:22px 0;font-size:34px;font-weight:700}
+.crm .r:first-of-type{margin-top:26px}
+.crm .th{width:62px;height:48px;border-radius:10px;background:linear-gradient(180deg,#e9e4d8,#bfb7a6)}
+.crm .r i{font-style:normal;font-size:24px;font-weight:800;text-align:center;padding:10px 0;border-radius:18px;border:2px solid var(--line);color:var(--mute)}
+#c7 .big{font-size:150px;margin-top:22px}#c7 .big em{font-style:normal;color:var(--acc)}
+#c8 .q{font-size:190px;color:var(--bg);margin-top:30px}
+#c8 .l{font-size:52px;font-weight:800;color:var(--bg);margin-top:30px;line-height:1.1}
+#c8 .lbl{color:rgba(13,14,11,.65)}
+#loop{position:absolute;left:70px;top:1010px;width:800px;font-size:80px}
+#cap{position:absolute;left:70px;width:780px;top:1290px;font-size:46px;font-weight:700;line-height:1.2}
+#cap .w{opacity:.35}#cap .w.on{opacity:1}
+</style></head>
+<body>
+<div class="grid"></div><div id="bar"></div>
+<div id="hook" class="disp"></div>
+<div id="card">
+  <div class="st" id="c0"><div class="tm">6:00 PM</div><div class="nm">Hail</div><div class="chip">STORM CALLS</div></div>
+
+  <div class="st inb" id="c1">
+    <div class="lbl">Quote requests · 6:00 PM</div>
+    <div class="r"><span><b>D. Ross</b> · 14 Elm St</span><i id="a0">NEW</i></div>
+    <div class="r"><span><b>P. Shah</b> · 22 Oak Ave</span><i id="a1">NEW</i></div>
+    <div class="r"><span><b>L. Brandt</b> · 9 Maple Cres</span><i id="a2">NEW</i></div>
+    <div class="r"><span><b>C. Diaz</b> · 31 Birch Rd</span><i id="a3">NEW</i></div>
+    <div class="r"><span><b>H. Wong</b> · 5 Cedar Ln</span><i id="a4">NEW</i></div>
+  </div>
+
+  <div class="st" id="c2">
+    <div class="sms-h"><div class="av">RC</div><div><b>Your Roofing Co.</b><span>To D. Ross</span></div></div>
+    <div class="ts" style="top:170px">Today 6:01 PM</div>
+    <div class="bub in" style="top:220px" id="m1">Hi Dana, got your request. Can you send us a photo of the damage?</div>
+    <div class="photo" style="top:450px" id="m2"><div class="stain"></div><div class="drip"></div><div class="fn">IMG_0412.jpg</div></div>
+    <div class="bub out" style="top:730px" id="m3">Bedroom ceiling. It's dripping.</div>
+  </div>
+
+  <div class="st" id="c3">
+    <div class="lbl">Photo check · 14 Elm St</div>
+    <div class="tri"><div class="photo"><div class="stain"></div><div class="drip"></div></div>
+      <div class="tx">Water through ceiling<span>Active leak</span></div></div>
+    <div class="tag disp" id="urg">URGENT</div>
+  </div>
+
+  <div class="st" id="c4">
+    <div class="lbl">Text to on-call crew</div>
+    <div class="job">
+      <div class="k">ADDRESS</div><div class="v">14 Elm St</div>
+      <div class="k">ISSUE</div><div class="v">Leak, bedroom ceiling</div>
+      <div class="k">PHOTOS</div><div class="v">1 attached</div>
+    </div>
+    <div class="sent" id="sent">SENDING…</div>
+  </div>
+
+  <div class="st cal" id="c5">
+    <div class="lbl">22 Oak Ave · missing shingles</div>
+    <div class="day disp">Tue <em>9:00</em></div>
+    <div class="slot"><span>Inspection · P. Shah</span><em id="bk">BOOKING</em></div>
+    <div class="slot"><span>Tue 11:00</span><em>OPEN</em></div>
+    <div class="slot"><span>Wed 9:00</span><em>OPEN</em></div>
+  </div>
+
+  <div class="st crm" id="c6">
+    <div class="lbl">CRM · storm jobs</div>
+    <div class="r"><div class="th"></div><span>14 Elm St</span><i class="s6" data-k="u">CREW SENT</i></div>
+    <div class="r"><div class="th"></div><span>22 Oak Ave</span><i class="s6" data-k="ok">TUE 9:00</i></div>
+    <div class="r"><div class="th"></div><span>9 Maple Cres</span><i class="s6" data-k="ok">TUE 11:00</i></div>
+    <div class="r"><div class="th"></div><span>31 Birch Rd</span><i class="s6" data-k="ok">WED 9:00</i></div>
+    <div class="r"><div class="th"></div><span>5 Cedar Ln</span><i class="s6" data-k="ok">WED 11:00</i></div>
+  </div>
+
+  <div class="st" id="c7"><div class="lbl">Who goes first</div><div class="big disp"><em>Leak first.</em></div></div>
+
+  <div class="st" id="c8"><div class="lbl">Want this workflow?</div><div class="q disp">STORM</div><div class="l">Comment the word and I'll send it to you.</div></div>
+</div>
+<div id="loop" class="disp">Next storm, the photo decides who's first.</div>
+<div id="cap"></div>
+<script src="../../engine/base.js"></script>
+<script>
+const DUR=31;
+const CAP=[[0,"Stop driving to every storm call."],[2.2,"Let the photo decide who's first."],[4.4,"6pm. Hail. Your quote form starts filling up."],
+[7.3,"Each homeowner gets a text: send us a photo."],[10.6,"Water through a bedroom ceiling on Elm Street? Urgent."],[13.8,"Your on-call crew gets that address by 6:04."],
+[17.1,"Three missing shingles on Oak? Booked for Tuesday at 9."],[20.7,"Every single job lands in your CRM with the photos attached."],
+[24.7,"Leak first. Shingles Tuesday."],[26.2,"Comment STORM for the workflow."],[28.0,"Next storm, the photo decides who's first."]];
+const ST=[["c0",0,4.4],["c1",4.4,7.3],["c2",7.3,10.6],["c3",10.6,13.8],["c4",13.8,17.1],["c5",17.1,20.7],["c6",20.7,24.7],["c7",24.7,26.2],["c8",26.2,DUR+1]];
+const G=[[0,70,1080,780,130,65],[4.4,70,330,780,660,40],[7.3,150,330,620,920,56],[10.6,70,330,780,580,40],[13.8,70,330,780,660,40],[17.1,70,360,780,560,40],[20.7,70,330,780,700,40],[24.7,70,520,780,400,40],[26.2,70,330,780,640,48]];
+const geo=(t,i)=>track(t,G.map(g=>[g[0],g[i]]));
+const $=id=>document.getElementById(id);
+const HOOK=["Stop","driving","to","every","<span class=a>storm</span>","call."];
+$("hook").innerHTML=HOOK.map(w=>`<span>${w}</span>`).join(" ");const hw=[...$("hook").children];
+const AT=[4.9,5.3,5.7,6.1,6.5];
+const EV=[];ST.slice(1).forEach(s=>EV.push([s[1]-0.12,"whoosh"]));
+[0,0.4,0.8,1.2,1.6,2.0].forEach(x=>EV.push([x,"tick"]));
+AT.forEach(x=>EV.push([x,"pop"]));
+EV.push([7.8,"pop"],[8.8,"pop"],[9.6,"pop"],[11.8,"hit"],[15.6,"confirm"],[18.6,"confirm"]);
+[21.3,21.6,21.9,22.2,22.5].forEach(x=>EV.push([x,"tick"]));
+EV.push([24.9,"hit"],[26.4,"hit"],[28.0,"tick"]);
+window.EVENTS=EV;window.BPM=120;window.DRUMS_FROM=4.4;
+window.SHEET=[6.8,9.9,12.5,16.2,23.5];
+function seek(t){
+  $("bar").style.width=(t/DUR*1080)+"px";
+  hw.forEach((w,i)=>{const p=spring(t,i*0.35)*clamp((4.25-t)/.2);w.style.opacity=clamp(p);w.style.transform=`translateY(${(1-p)*60}px)`;});
+  const c=$("card");Object.assign(c.style,{left:geo(t,1)+"px",top:geo(t,2)+"px",width:geo(t,3)+"px",height:geo(t,4)+"px",borderRadius:geo(t,5)+"px"});
+  const cp=spring(t,26.2);c.style.background=mixColor("#171814","#ff5a1f",cp);c.style.borderColor=cp>.5?"transparent":"#2a2b26";c.style.opacity=clamp(spring(t,.2));
+  for(const [id,a,b] of ST) setv($(id),win(t,a,b),20);
+  AT.forEach((a,i)=>{const on=t>=a,e=$("a"+i);e.style.color=on?"#0d0e0b":"#8d8b82";e.style.background=on?"#ff5a1f":"transparent";e.style.borderColor=on?"#ff5a1f":"#2a2b26";e.style.transform=`scale(${1+.12*Math.max(0,1-Math.abs(t-a)/.15)})`;});
+  [["m1",7.8],["m2",8.8],["m3",9.6]].forEach(([id,a])=>setv($(id),clamp(spring(t,a)),24,false));
+  const u=t>=11.8,ug=$("urg");ug.style.background=u?"#ff5a1f":"transparent";ug.style.color=u?"#0d0e0b":"#8d8b82";ug.style.borderColor=u?"#ff5a1f":"#2a2b26";ug.style.transform=`scale(${1+.08*Math.max(0,1-Math.abs(t-11.8)/.2)})`;
+  const s=t>=15.6,se=$("sent");se.textContent=s?"✓ SENT 6:04 PM":"SENDING…";se.style.background=s?"#c8f03c":"transparent";se.style.color=s?"#0d0e0b":"#8d8b82";se.style.borderColor=s?"#c8f03c":"#2a2b26";
+  const b=t>=18.6,bk=$("bk");bk.textContent=b?"✓ BOOKED":"BOOKING";bk.style.background=b?"#c8f03c":"transparent";bk.style.color=b?"#0d0e0b":"#ff5a1f";bk.style.borderColor=b?"#c8f03c":"#ff5a1f";
+  document.querySelectorAll(".s6").forEach((e,i)=>{const a=21.3+i*.3,on=t>=a,ok=e.dataset.k==="ok";e.style.background=on?(ok?"#c8f03c":"#ff5a1f"):"transparent";e.style.color=on?"#0d0e0b":"#2a2b26";e.style.borderColor=on?(ok?"#c8f03c":"#ff5a1f"):"#2a2b26";});
+  setv($("loop"),clamp(spring(t,28.0)),30);
+  captions($("cap"),CAP,t,DUR,[0,9,10]);
+}
+window.seek=seek;window.DUR=DUR;seek(0);
+</script></body></html>
