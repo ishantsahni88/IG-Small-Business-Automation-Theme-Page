@@ -44,6 +44,8 @@ def used_hooks():
 
 
 def caption_text(meta, brand):
+    if meta.get("caption_full"):  # a finished, linted caption written for this episode wins
+        return meta["caption_full"].strip()
     tags = [x for x in brand["hashtags"].split("\n") if x.strip()]
     # hashtag_set: 0 = trades, 1 = clinics, 2 = general automation (brands/small-business-automation.json)
     idx = int(meta.get("hashtag_set", int(meta["date"].replace("-", "")))) % len(tags)

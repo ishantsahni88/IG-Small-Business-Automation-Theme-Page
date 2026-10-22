@@ -69,6 +69,8 @@ with an original soundtrack synthesized by `reels/engine/synth.py`. No generatio
 6. **Commit and push** the ledger, then include the Reels in the weekly report: what was scheduled, the hooks and their scores, and every new keyword. Ishant has to deliver each keyword's workflow by DM.
 
 ### Reel rules
+- Instagram allows at most 5 hashtags per post. Each set in the brand file has exactly 5; never add more.
+- An episode may carry `caption_full` in `meta.json` (a finished caption written and linted for it); `build_reel.py` then uses it as-is.
 - Never invent clients, results, revenue, call counts or statistics. Names, addresses and numbers on screen are clearly fictional (555 phone numbers).
 - Healthcare Reels show scheduling and admin only, never clinical decisions.
 - One idea per Reel and one ask at the end.
