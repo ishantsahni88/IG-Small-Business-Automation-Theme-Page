@@ -6,11 +6,11 @@ Metricool schedules each post from the image's raw GitHub URL.
 | Brand file | Page | Metricool brand ID | Poster templates |
 | --- | --- | --- | --- |
 | `brands/unhurried.json` | @unhurried_daily | 7195689 | `quote` (mindfulness positive thoughts). **Weekly run skips this brand**: from Nov 21 the "Unhurried weekly autopilot" in `ishantsahni88/unhurried-media` owns it. |
-| `brands/small-business-automation.json` | @automatesmallbusiness | not connected yet | `workflow`, `workflow`, `statement` (rotating) |
+| `brands/small-business-automation.json` | @automatesmallbusiness | not connected yet (the weekly run fills this in once the page appears in Metricool) | `workflow`, `workflow`, `statement` (rotating) |
 
 A brand with an empty `metricoolBlogId` is skipped until the ID is filled in.
 
-## Every week (run on Monday)
+## Every week (runs Sunday morning, scheduled task "Small Business Automation weekly autopilot")
 
 For each brand with a `metricoolBlogId`, except Unhurried (owned by the unhurried-media autopilot):
 
