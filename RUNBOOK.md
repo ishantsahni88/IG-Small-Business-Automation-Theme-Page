@@ -35,4 +35,41 @@ For each brand with a `metricoolBlogId`, except Unhurried (owned by the unhurrie
 
 - Times come from the brand file (`postTime`, `timezone`).
 - Do not edit or delete posts already in Metricool.
-- Reels are not part of this weekly run.
+- Reels for @automatesmallbusiness run in the same weekly session; see **Reels** below.
+
+## Reels (@automatesmallbusiness only)
+
+Three Reels a week, **Mon, Wed and Fri at `reelTime`** (12:30 Toronto), kept scheduled about 14 days ahead.
+Every frame is code: an HTML page with a `seek(t)` function, rendered in headless Chromium and piped to ffmpeg,
+with an original soundtrack synthesized by `reels/engine/synth.py`. No generation credits, no licensed audio.
+
+| Path | What it is |
+| --- | --- |
+| `reels/episodes/<id>/` | `index.html` (animation), `script.txt` (one beat per line), `meta.json` |
+| `reels/deliverables/<keyword>.md` | The workflow a viewer gets when they comment the keyword |
+| `reels/tools/` | `hookscore.py`, `hooks.json` (26 hook formulas), `beats.py`, `detect.py` from instagram-agent-skill (MIT) |
+| `reels/build_reel.py` | Validates, renders MP4 + cover JPG, writes the Metricool payload |
+| `ledger/small-business-automation-reels.csv` | Every Reel: id, date, hook, status (`ready`, `scheduled`, `failed`) |
+
+### Every week
+
+1. **Schedule what's ready.** For each `ready` row in the reels ledger: if its date has passed or the slot is taken, move it to the next free Mon/Wed/Fri, update `meta.json`, and run `python3 reels/build_reel.py reels/episodes/<id> --no-render`.
+2. **Count the gap.** Work out how many Mon/Wed/Fri slots in the next 14 days have no Reel. Make that many new episodes (normally 3).
+3. **For each new episode:**
+   - **Topic:** one pillar from the brand file, applied to one industry. Rotate industries (plumbing, HVAC, dental, physio, roofing, any small business) and don't repeat a workflow already in the ledger.
+   - **Hook:** write three hooks from three different formulas in `reels/tools/hooks.json`, score them with `python3 reels/tools/hookscore.py hooks.txt`, and keep the best one that has **no invented number**. It must score 70 or more.
+   - **Script:** 18 to 40 seconds, one beat per line, ending on a line that echoes a word from the hook. Run `python3 reels/tools/beats.py script.txt --target 30` and fix every flag (hook over 3 seconds, beats over 4 seconds, no loop). Run `python3 reels/tools/detect.py script.txt` and fix anything flagged.
+   - **Keyword and deliverable:** pick a one-word keyword not used before and write `reels/deliverables/<keyword>.md` in the same shape as `calls.md`: what it does step by step, what you need, a setup checklist, and the rules.
+   - **Animation:** copy the closest episode. `ep001` is scene by scene; `ep002` and `ep003` are one card morphing through every state. Change the content, the `CAP` caption timings (one entry per script line) and the `EVENTS` sound cues. Use the palette: bg `#0d0e0b`, ink `#f3f1ea`, orange `#ff5a1f`, lime `#c8f03c`.
+   - **Contact sheet:** `python3 reels/engine/render.py reels/episodes/<id>/index.html sheet.png --sheet`, then look at it. Fix text that's cut off, overlaps the captions or leaves the safe zone (keep content between y=230 and y=1440 and out of the right 230px), cursors that miss what they click, and empty or broken states. Repeat until clean.
+   - **Caption:** 2 to 3 sentences, no hashtags, no call to action, no % or $ figures. The hook, the keyword CTA and the hashtags are added automatically. Set `hashtag_set`: 0 for trades, 1 for clinics, 2 for general automation.
+   - **Build:** `python3 reels/build_reel.py reels/episodes/<id>` until it prints `OK`. Then `python3 reels/ledger_reel.py <id> <date> "<hook>" ready`.
+4. **Publish media:** commit and push. Wait until both raw URLs (the `.mp4` and the `.jpg` under `media/small-business-automation/reels/`) return HTTP 200.
+5. **Schedule** (only when `metricoolBlogId` is filled in): for each `ready` Reel inside the 14-day window, first check `getScheduledPosts` for that date and skip it if a REEL is already there. Otherwise call `createScheduledPost` with exactly `args` from `payloads/small-business-automation/reels/<id>.json`, then run `python3 reels/ledger_reel.py <id> <date> "<hook>" scheduled <metricool id>`. On an error, record `failed`, stop scheduling Reels and report it.
+6. **Commit and push** the ledger, then include the Reels in the weekly report: what was scheduled, the hooks and their scores, and every new keyword. Ishant has to deliver each keyword's workflow by DM.
+
+### Reel rules
+- Never invent clients, results, revenue, call counts or statistics. Names, addresses and numbers on screen are clearly fictional (555 phone numbers).
+- Healthcare Reels show scheduling and admin only, never clinical decisions.
+- One idea per Reel and one ask at the end.
+- Requirements: Python 3 with `playwright`, `numpy` and `scipy`, plus ffmpeg and Chromium. If they're missing, run `pip install --break-system-packages playwright numpy scipy`; Chromium is preinstalled at `/opt/pw-browsers`.

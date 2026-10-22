@@ -1,0 +1,13 @@
+{
+ "id": "ep002-hvac-quotes-overnight",
+ "date": "2026-10-28",
+ "hook": "Stop calling quotes back tomorrow. Watch this instead.",
+ "keyword": "QUOTE",
+ "seconds": 25.1,
+ "hook_score": 85.8,
+ "args": {
+  "blogId": "",
+  "date": "2026-10-28T12:30:00",
+  "info": "{\"autoPublish\": true, \"draft\": false, \"descendants\": [], \"firstCommentText\": \"\", \"hasNotReadNotes\": false, \"providers\": [{\"network\": \"instagram\"}], \"media\": [\"https://raw.githubusercontent.com/ishantsahni88/ig-small-business-automation-theme-page/main/media/small-business-automation/reels/ep002-hvac-quotes-overnight.mp4?v=20261028\"], \"videoThumbnailUrl\": \"https://raw.githubusercontent.com/ishantsahni88/ig-small-business-automation-theme-page/main/media/small-business-automation/reels/ep002-hvac-quotes-overnight.jpg?v=20261028\", \"mediaAltText\": [], \"shortener\": false, \"smartLinkData\": {\"ids\": []}, \"publicationDate\": {\"dateTime\": \"2026-10-28T12:30:00\", \"timezone\": \"America/Toronto\"}, \"text\": \"Stop calling quotes back tomorrow. Watch this instead.\\n\\nA quote request that sits overnight can easily go to whoever answers first. This flow texts the homeowner within a minute, asks two questions, and sends hot leads straight to your calendar. Your tech has the job sheet before leaving the shop.\\n\\nComment QUOTE and I'll send you the workflow.\\n.\\n#automatesmallbusiness #aiautomation #smallbusiness #businessautomation #hvac #plumbing #roofing\", \"instagramData\": {\"type\": \"REEL\", \"showReelOnFeed\": true, \"isAiGenerated\": false}}"
+ }
+}

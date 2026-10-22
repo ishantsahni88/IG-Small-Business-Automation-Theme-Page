@@ -25,5 +25,7 @@
     "workflow",
     "statement"
   ],
-  "startAfter": ""
+  "startAfter": "",
+  "reelDays": "Mon,Wed,Fri",
+  "reelsAheadDays": 14
 }

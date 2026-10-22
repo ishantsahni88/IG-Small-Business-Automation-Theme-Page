@@ -1,0 +1,13 @@
+{
+ "id": "ep001-missed-9pm-call",
+ "date": "2026-10-26",
+ "hook": "You miss the 9pm call. Watch who answers it instead.",
+ "keyword": "CALLS",
+ "seconds": 30.6,
+ "hook_score": 80.8,
+ "args": {
+  "blogId": "",
+  "date": "2026-10-26T12:30:00",
+  "info": "{\"autoPublish\": true, \"draft\": false, \"descendants\": [], \"firstCommentText\": \"\", \"hasNotReadNotes\": false, \"providers\": [{\"network\": \"instagram\"}], \"media\": [\"https://raw.githubusercontent.com/ishantsahni88/ig-small-business-automation-theme-page/main/media/small-business-automation/reels/ep001-missed-9pm-call.mp4?v=20261026\"], \"videoThumbnailUrl\": \"https://raw.githubusercontent.com/ishantsahni88/ig-small-business-automation-theme-page/main/media/small-business-automation/reels/ep001-missed-9pm-call.jpg?v=20261026\", \"mediaAltText\": [], \"shortener\": false, \"smartLinkData\": {\"ids\": []}, \"publicationDate\": {\"dateTime\": \"2026-10-26T12:30:00\", \"timezone\": \"America/Toronto\"}, \"text\": \"You miss the 9pm call. Watch who answers it instead.\\n\\nAfter-hours calls are where plumbing jobs quietly slip to a competitor. An AI receptionist answers, sorts emergencies from routine work, and logs every caller in your CRM. You keep working, and nobody waits for a callback.\\n\\nComment CALLS and I'll send you the workflow.\\n.\\n#automatesmallbusiness #aiautomation #smallbusiness #businessautomation #hvac #plumbing #roofing\", \"instagramData\": {\"type\": \"REEL\", \"showReelOnFeed\": true, \"isAiGenerated\": false}}"
+ }
+}

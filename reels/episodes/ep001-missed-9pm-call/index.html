@@ -1,0 +1,187 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+:root{--bg:#0d0e0b;--ink:#f3f1ea;--mute:#8d8b82;--line:#2a2b26;--acc:#ff5a1f;--ok:#c8f03c;--card:#171814}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--bg);color:var(--ink);font-family:Inter,sans-serif}
+#stage{position:absolute;inset:0;overflow:hidden}
+.grid{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:90px 90px;opacity:.35}
+.scene{position:absolute;inset:0;opacity:0}
+.disp{font-family:"Inter Display",Inter,sans-serif;font-weight:800;letter-spacing:-.03em;line-height:.95}
+.tag{position:absolute;left:70px;top:250px;font-size:30px;font-weight:600;letter-spacing:.18em;color:var(--mute);text-transform:uppercase}
+.tag b{color:var(--acc)}
+/* hook */
+#clock{position:absolute;left:70px;top:330px;font-size:250px}
+#clock small{font-size:110px;color:var(--mute)}
+#phone{position:absolute;left:270px;top:640px;width:380px;height:380px;border-radius:50%;border:6px solid var(--acc);display:flex;align-items:center;justify-content:center}
+#phone svg{width:190px;height:190px}
+.ring{position:absolute;left:270px;top:640px;width:380px;height:380px;border-radius:50%;border:4px solid var(--acc)}
+#missed{position:absolute;left:70px;top:1075px;font-size:92px;color:var(--acc)}
+#watch{position:absolute;left:70px;top:1075px;font-size:92px}
+/* call screen */
+.panel{position:absolute;left:70px;width:780px;background:var(--card);border:2px solid var(--line);border-radius:36px;padding:40px}
+#call{top:330px;height:300px}
+#call .who{font-size:34px;color:var(--mute);font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+#call .name{font-size:70px;font-weight:800;margin-top:14px}
+#call .state{position:absolute;right:40px;top:44px;font-size:30px;font-weight:700;padding:12px 24px;border-radius:40px}
+#wave{position:absolute;left:40px;bottom:40px;display:flex;gap:10px;align-items:center;height:70px}
+#wave i{display:block;width:14px;border-radius:7px;background:var(--ok)}
+.bub{position:absolute;max-width:700px;font-size:50px;font-weight:600;line-height:1.2;padding:32px 40px;border-radius:40px}
+#b1{left:70px;top:760px;background:var(--ink);color:var(--bg);border-bottom-left-radius:8px}
+#b2{left:150px;top:1010px;background:#24251f;border-bottom-right-radius:8px}
+/* intake */
+#intake{top:420px}
+#intake h3{font-size:34px;letter-spacing:.14em;color:var(--mute);text-transform:uppercase;margin-bottom:26px}
+.row{display:flex;justify-content:space-between;align-items:center;border-top:2px solid var(--line);padding:30px 0;font-size:44px}
+.row span{color:var(--mute);font-size:34px;font-weight:600}
+.row b{font-weight:700}
+.row .chk{color:var(--ok)}
+/* branch */
+#src{position:absolute;left:290px;top:330px;width:340px;padding:30px;text-align:center;border-radius:28px;background:var(--ink);color:var(--bg);font-size:44px;font-weight:800}
+svg#paths{position:absolute;left:0;top:0;width:1080px;height:1920px}
+.node{position:absolute;width:380px;padding:34px 30px;border-radius:28px;background:var(--card);border:3px solid var(--line)}
+.node .k{font-size:28px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.node .v{font-size:46px;font-weight:800;margin-top:14px;line-height:1.05}
+.node .s{font-size:32px;color:var(--mute);margin-top:12px;font-weight:600}
+#n1{left:60px;top:780px;border-color:var(--acc)} #n1 .k{color:var(--acc)}
+#n2{left:470px;top:780px;border-color:var(--ok)} #n2 .k{color:var(--ok)}
+/* crm */
+#crm{top:400px}
+#crm .hd{display:flex;justify-content:space-between;align-items:center}
+#crm .hd b{font-size:56px}
+.pill{font-size:28px;font-weight:700;padding:10px 22px;border-radius:30px}
+#crm p{font-size:40px;line-height:1.35;color:#d9d6cc;margin-top:28px}
+#crm .meta{display:flex;gap:16px;margin-top:30px;flex-wrap:wrap}
+#crm .meta span{font-size:28px;font-weight:600;color:var(--mute);border:2px solid var(--line);padding:10px 20px;border-radius:24px}
+#done{position:absolute;left:70px;top:900px;font-size:96px}
+#done em{font-style:normal;color:var(--ok)}
+/* cta */
+#cta1{position:absolute;left:70px;top:420px;font-size:60px;color:var(--mute);font-weight:700}
+#cta2{position:absolute;left:70px;top:510px;font-size:260px;color:var(--acc)}
+#cta3{position:absolute;left:70px;top:790px;font-size:60px;font-weight:700;line-height:1.15;width:780px}
+#loop{position:absolute;left:70px;top:1080px;font-size:84px;width:800px}
+/* captions */
+#cap{position:absolute;left:70px;width:780px;top:1290px;font-size:46px;font-weight:700;line-height:1.2;color:var(--ink)}
+#cap .w{opacity:.35}
+#cap .w.on{opacity:1}
+#brand{position:absolute;left:70px;top:1440px;font-size:26px;font-weight:700;letter-spacing:.16em;color:var(--mute);text-transform:uppercase}
+#bar{position:absolute;left:0;top:0;height:10px;background:var(--acc)}
+</style></head>
+<body><div id="stage">
+<div class="grid"></div>
+<div id="bar"></div>
+
+<div class="scene" id="s1">
+  <div class="tag">Plumbing · <b>after hours</b></div>
+  <div id="clock" class="disp">9:00<small> PM</small></div>
+  <div class="ring" id="r1"></div><div class="ring" id="r2"></div>
+  <div id="phone"><svg viewBox="0 0 24 24" fill="none" stroke="#ff5a1f" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></div>
+  <div id="missed" class="disp">MISSED CALL</div>
+  <div id="watch" class="disp">Watch who<br>answers it.</div>
+</div>
+
+<div class="scene" id="s2">
+  <div class="panel" id="call">
+    <div class="who">Incoming · 9:00 PM</div>
+    <div class="name">AI receptionist</div>
+    <div class="state" id="cstate">RINGING</div>
+    <div id="wave"></div>
+  </div>
+  <div class="bub" id="b1">Thanks for calling. Is this an emergency?</div>
+  <div class="bub" id="b2">Yeah, water's coming through the kitchen ceiling.</div>
+</div>
+
+<div class="scene" id="s3">
+  <div class="panel" id="intake">
+    <h3>Call intake</h3>
+    <div class="row" id="i1"><span>Issue</span><b>Leak, kitchen</b></div>
+    <div class="row" id="i2"><span>Urgency</span><b style="color:var(--acc)">Emergency</b></div>
+    <div class="row" id="i3"><span>Address</span><b>14 Maple Ave</b></div>
+    <div class="row" id="i4"><span>Callback</span><b>(416) 555-0142</b></div>
+    <div class="row" id="i5"><span>Status</span><b class="chk">Captured ✓</b></div>
+  </div>
+</div>
+
+<div class="scene" id="s4">
+  <div class="tag">What happens next</div>
+  <div id="src">Call sorted</div>
+  <svg id="paths"><path id="p1" d="M400 440 C400 600 250 620 250 780" stroke="#ff5a1f" stroke-width="6" fill="none"/><path id="p2" d="M680 440 C680 600 660 620 660 780" stroke="#c8f03c" stroke-width="6" fill="none"/></svg>
+  <div class="node" id="n1"><div class="k">Burst pipe</div><div class="v">Text to on-call tech</div><div class="s">Sent right away</div></div>
+  <div class="node" id="n2"><div class="k">Dripping tap</div><div class="v">Booked 8:00 AM</div><div class="s">Tomorrow</div></div>
+</div>
+
+<div class="scene" id="s5">
+  <div class="panel" id="crm">
+    <div class="hd"><b>New lead</b><span class="pill" style="background:var(--ok);color:var(--bg)">AUTO-LOGGED</span></div>
+    <p>Kitchen ceiling leak at 14 Maple Ave. Marked emergency. On-call tech notified at 9:01 PM.</p>
+    <div class="meta"><span>Call recording</span><span>Transcript</span><span>Tech: notified</span></div>
+  </div>
+  <div id="done" class="disp">You finish<br>the job.<br><em>Lead handled.</em></div>
+</div>
+
+<div class="scene" id="s6">
+  <div id="cta1">Want this workflow?</div>
+  <div id="cta2" class="disp">CALLS</div>
+  <div id="cta3">Comment the word and I'll send it to you.</div>
+  <div id="loop" class="disp">Nobody misses the 9pm call again.</div>
+</div>
+
+<div id="cap"></div>
+</div>
+<script>
+const BEATS=[
+ [0.0,"You miss the 9pm call."],[1.9,"Watch who answers it instead."],
+ [3.8,"Two rings. Your AI receptionist picks up."],[6.5,"\"Thanks for calling. Is this an emergency?\""],
+ [9.2,"What's leaking? Kitchen or basement?"],[11.2,"It grabs the address and a callback number."],
+ [14.2,"Burst pipe? Your on-call tech gets a text right away."],[18.0,"Dripping tap? Booked for 8am tomorrow."],
+ [20.4,"Every call lands in your CRM with a summary."],[23.8,"You finish the job. The lead's already handled."],
+ [26.9,"Comment CALLS and I'll send you the workflow."],[29.8,"Nobody misses the 9pm call again."]];
+const DUR=32.5;
+const S=[["s1",0,3.8],["s2",3.8,9.2],["s3",9.2,14.2],["s4",14.2,20.4],["s5",20.4,26.9],["s6",26.9,DUR+1]];
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const ease=x=>{x=cl(x);return 1-Math.pow(1-x,3)};
+const prog=(t,a,d)=>ease((t-a)/d);
+function show(el,p,dy=40){el.style.opacity=p;el.style.transform=`translateY(${(1-p)*dy}px)`}
+// waveform bars
+const wave=$("wave");for(let i=0;i<34;i++){const b=document.createElement("i");wave.appendChild(b)}
+function seek(t){
+  $("bar").style.width=(t/DUR*1080)+"px";
+  for(const [id,a,b] of S){const fi=prog(t,a,.25),fo=1-prog(t,b-.2,.2);const el=$(id);el.style.opacity=Math.min(fi,fo);}
+  // s1
+  const shake=t<1.9?Math.sin(t*60)*8*(1-t/1.9):0;
+  $("phone").style.transform=`translateX(${shake}px)`;
+  for(const [id,off] of [["r1",0],["r2",.5]]){const k=((t+off)%1);const r=$(id);r.style.opacity=t<1.9?(1-k)*.8:0;r.style.transform=`scale(${1+k*.5})`;}
+  const m=prog(t,.2,.3)*(1-prog(t,1.8,.2));show($("missed"),m);
+  show($("watch"),prog(t,1.95,.35));
+  $("clock").style.opacity=1-prog(t,1.8,.3)*.6;
+  // s2
+  const ans=t>=5.0;
+  $("cstate").textContent=ans?"ANSWERED":"RINGING";
+  $("cstate").style.background=ans?"#c8f03c":"#ff5a1f";$("cstate").style.color="#0d0e0b";
+  show($("call"),prog(t,3.85,.4));
+  [...wave.children].forEach((b,i)=>{const h=ans?18+Math.abs(Math.sin(t*9+i*.7))*52*Math.abs(Math.sin(t*2.3+i)):8;b.style.height=h+"px";b.style.opacity=ans?1:.3});
+  show($("b1"),prog(t,6.5,.4));show($("b2"),prog(t,8.0,.4));
+  // s3
+  show($("intake"),prog(t,9.25,.35));
+  [["i1",9.6],["i2",10.4],["i3",11.4],["i4",12.2],["i5",13.1]].forEach(([id,a])=>show($(id),prog(t,a,.3),20));
+  // s4
+  show($("src"),prog(t,14.3,.35));
+  for(const [id,a] of [["p1",14.7],["p2",18.0]]){const p=$(id);const L=p.getTotalLength();p.style.strokeDasharray=L;p.style.strokeDashoffset=L*(1-prog(t,a,.6));}
+  show($("n1"),prog(t,15.2,.4));show($("n2"),prog(t,18.5,.4));
+  // s5
+  show($("crm"),prog(t,20.5,.4));show($("done"),prog(t,23.9,.4));
+  // s6
+  show($("cta1"),prog(t,27.0,.3));const c=prog(t,27.2,.45);$("cta2").style.opacity=c;$("cta2").style.transform=`scale(${.85+.15*c})`;$("cta2").style.transformOrigin="left center";
+  show($("cta3"),prog(t,27.8,.35));show($("loop"),prog(t,29.9,.4));
+  // captions: current beat, words light up
+  let bi=0;for(let i=0;i<BEATS.length;i++)if(t>=BEATS[i][0])bi=i;
+  const [bs,txt]=BEATS[bi];const be=bi+1<BEATS.length?BEATS[bi+1][0]:DUR;
+  $("cap").style.opacity=(bi===1||bi>=10)?0:1;
+  const words=txt.split(" ");const k=cl((t-bs)/((be-bs)*.85));
+  const lit=Math.ceil(k*words.length);
+  $("cap").innerHTML=words.map((w,i)=>`<span class="w${i<lit?" on":""}">${w}</span>`).join(" ");
+}
+window.EVENTS=[[0,"ring"],[1.0,"ring"],[1.95,"tick"],[3.68,"whoosh"],[5.0,"confirm"],[6.5,"pop"],[8.0,"pop"],[9.08,"whoosh"],[9.6,"tick"],[10.4,"tick"],[11.4,"tick"],[12.2,"tick"],[13.1,"confirm"],[14.08,"whoosh"],[15.2,"pop"],[18.5,"confirm"],[20.28,"whoosh"],[20.5,"pop"],[23.9,"confirm"],[26.78,"whoosh"],[27.2,"hit"],[29.9,"tick"]];window.BPM=120;window.DRUMS_FROM=3.8;
+window.seek=seek;window.DUR=DUR;seek(0);
+</script></body></html>

@@ -1,0 +1,13 @@
+{
+ "id": "ep003-dental-no-shows",
+ "date": "2026-10-30",
+ "hook": "No-shows cost you a chair. Watch this fix tomorrow's.",
+ "keyword": "CHAIR",
+ "seconds": 28.7,
+ "hook_score": 81.4,
+ "args": {
+  "blogId": "",
+  "date": "2026-10-30T12:30:00",
+  "info": "{\"autoPublish\": true, \"draft\": false, \"descendants\": [], \"firstCommentText\": \"\", \"hasNotReadNotes\": false, \"providers\": [{\"network\": \"instagram\"}], \"media\": [\"https://raw.githubusercontent.com/ishantsahni88/ig-small-business-automation-theme-page/main/media/small-business-automation/reels/ep003-dental-no-shows.mp4?v=20261030\"], \"videoThumbnailUrl\": \"https://raw.githubusercontent.com/ishantsahni88/ig-small-business-automation-theme-page/main/media/small-business-automation/reels/ep003-dental-no-shows.jpg?v=20261030\", \"mediaAltText\": [], \"shortener\": false, \"smartLinkData\": {\"ids\": []}, \"publicationDate\": {\"dateTime\": \"2026-10-30T12:30:00\", \"timezone\": \"America/Toronto\"}, \"text\": \"No-shows cost you a chair. Watch this fix tomorrow's.\\n\\nConfirmation calls eat the start of every front-desk morning. Patients confirm or reschedule by text, freed slots go to your waitlist, and your team only calls the few who never replied. It's scheduling admin only, with no clinical decisions.\\n\\nComment CHAIR and I'll send you the workflow.\\n.\\n#automatesmallbusiness #aiautomation #smallbusiness #dentaloffice #physiotherapy #clinicowner\", \"instagramData\": {\"type\": \"REEL\", \"showReelOnFeed\": true, \"isAiGenerated\": false}}"
+ }
+}

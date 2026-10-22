@@ -1,0 +1,10 @@
+{
+ "id": "ep001-missed-9pm-call",
+ "date": "2026-10-26",
+ "hook": "You miss the 9pm call. Watch who answers it instead.",
+ "formula": "Cold Open Demo",
+ "keyword": "CALLS",
+ "caption": "After-hours calls are where plumbing jobs quietly slip to a competitor. An AI receptionist answers, sorts emergencies from routine work, and logs every caller in your CRM. You keep working, and nobody waits for a callback.",
+ "cover_t": 2.5,
+ "hashtag_set": 0
+}

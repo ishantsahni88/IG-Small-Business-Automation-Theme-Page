@@ -1,0 +1,195 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+:root{--bg:#0d0e0b;--ink:#f3f1ea;--mute:#8d8b82;--line:#2a2b26;--acc:#ff5a1f;--ok:#c8f03c;--card:#171814}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--bg);color:var(--ink);font-family:Inter,sans-serif}
+.grid{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:90px 90px;opacity:.3}
+.disp{font-family:"Inter Display",Inter,sans-serif;font-weight:800;letter-spacing:-.03em;line-height:.95}
+#bar{position:absolute;left:0;top:0;height:10px;background:var(--acc)}
+#hook{position:absolute;left:70px;top:380px;width:800px;font-size:150px}
+#hook span{display:inline-block}
+#hook .a{color:var(--acc)}
+#card{position:absolute;overflow:hidden;border:2px solid var(--line)}
+.st{position:absolute;inset:0;padding:44px}
+.lbl{font-size:28px;font-weight:700;letter-spacing:.16em;color:var(--mute);text-transform:uppercase}
+/* s0 pill */
+#c0{display:flex;align-items:center;gap:26px;padding:0 44px}
+#c0 .dot{width:26px;height:26px;border-radius:50%;background:var(--acc)}
+#c0 .t{font-size:38px;font-weight:700;white-space:nowrap}
+#c0 .s{margin-left:auto;white-space:nowrap;font-size:30px;color:var(--mute);font-weight:600}
+#c0 .s s{text-decoration-thickness:4px;text-decoration-color:var(--acc)}
+/* s1 form */
+.field{margin-top:30px}
+.field .k{font-size:28px;color:var(--mute);font-weight:600;margin-bottom:12px}
+.field .v{font-size:44px;font-weight:700;border:2px solid var(--line);border-radius:18px;padding:22px 26px;min-height:96px}
+.btn{position:absolute;left:44px;right:44px;bottom:44px;height:110px;border-radius:24px;background:var(--ink);color:var(--bg);font-size:42px;font-weight:800;display:flex;align-items:center;justify-content:center}
+/* sms */
+.sms-h{display:flex;align-items:center;gap:20px;border-bottom:2px solid var(--line);padding-bottom:28px}
+.av{width:76px;height:76px;border-radius:50%;background:var(--acc);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:34px;color:var(--bg)}
+.sms-h b{font-size:38px}.sms-h span{display:block;font-size:26px;color:var(--mute);font-weight:600;margin-top:4px}
+.bub{position:absolute;max-width:440px;font-size:36px;font-weight:600;line-height:1.25;padding:24px 30px;border-radius:32px}
+.in{left:44px;background:#26271f;border-bottom-left-radius:8px}
+.out{right:44px;background:var(--ok);color:var(--bg);border-bottom-right-radius:8px}
+.ts{position:absolute;left:0;right:0;text-align:center;font-size:24px;color:var(--mute);font-weight:600}
+/* score */
+#meter{height:40px;border-radius:20px;background:#26271f;margin-top:40px;overflow:hidden}
+#fill{height:100%;background:var(--acc);border-radius:20px}
+.tags{display:flex;gap:16px;margin-top:36px;flex-wrap:wrap}
+.tags span{font-size:30px;font-weight:700;border:2px solid var(--line);padding:12px 22px;border-radius:24px}
+#hot{font-size:120px;margin-top:20px}
+/* calendar */
+.cal{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:30px}
+.cal .d{font-size:28px;font-weight:700;color:var(--mute);text-align:center;padding-bottom:6px}
+.cal .sl{height:96px;border-radius:16px;border:2px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:700;color:var(--mute)}
+.cal .busy{background:#1f201b;color:#4a4a43;border-color:transparent}
+#pick{transition:none}
+/* job */
+.row{display:flex;justify-content:space-between;border-top:2px solid var(--line);padding:26px 0;font-size:38px}
+.row span{color:var(--mute);font-size:30px;font-weight:600}
+#sent{position:absolute;left:44px;bottom:44px;font-size:34px;font-weight:800;color:var(--ok)}
+/* summary */
+#c7 .big{font-size:110px;margin-top:20px}
+#c7 .big em{font-style:normal;color:var(--ok)}
+/* cta */
+#c8 .q{font-size:200px;color:var(--bg);margin-top:30px}
+#c8 .l{font-size:52px;font-weight:800;color:var(--bg);margin-top:30px;line-height:1.1}
+#c8 .lbl{color:rgba(13,14,11,.65)}
+#loop{position:absolute;left:70px;top:1010px;width:800px;font-size:80px}
+#cursor{position:absolute;width:56px;height:56px;pointer-events:none}
+#ripple{position:absolute;width:120px;height:120px;border-radius:50%;border:4px solid var(--ink)}
+#cap{position:absolute;left:70px;width:780px;top:1290px;font-size:46px;font-weight:700;line-height:1.2}
+#cap .w{opacity:.35}#cap .w.on{opacity:1}
+</style></head>
+<body>
+<div class="grid"></div><div id="bar"></div>
+<div id="hook" class="disp"></div>
+
+<div id="card">
+  <div class="st" id="c0"><div class="dot"></div><div class="t">New quote request</div><div class="s">Call back: <s>tomorrow</s></div></div>
+
+  <div class="st" id="c1">
+    <div class="lbl">Get a quote · Furnace &amp; AC</div>
+    <div class="field"><div class="k">Name</div><div class="v" id="f1"></div></div>
+    <div class="field"><div class="k">What do you need?</div><div class="v" id="f2"></div></div>
+    <div class="field"><div class="k">Postal code</div><div class="v" id="f3"></div></div>
+    <div class="btn" id="sub">Request a quote</div>
+  </div>
+
+  <div class="st" id="c2">
+    <div class="sms-h"><div class="av">HV</div><div><b>Your HVAC Co.</b><span>Text message</span></div></div>
+    <div class="ts" style="top:170px" id="ts1">Today 7:43 PM</div>
+    <div class="bub in" style="top:220px" id="m1">Hi Dana, thanks for the quote request. Two quick questions so we can book you in.</div>
+    <div class="bub in" style="top:470px" id="m2">What system is it?</div>
+    <div class="bub out" style="top:580px" id="m3">Gas furnace</div>
+    <div class="bub in" style="top:690px" id="m4">And roughly how old?</div>
+    <div class="bub out" style="top:800px" id="m5">About 18 years</div>
+  </div>
+
+  <div class="st" id="c4">
+    <div class="lbl">Lead sorted automatically</div>
+    <div id="hot" class="disp">HOT LEAD</div>
+    <div id="meter"><div id="fill"></div></div>
+    <div class="tags"><span>Replacement</span><span>18 yrs old</span><span>Replied in 2 min</span></div>
+  </div>
+
+  <div class="st" id="c5">
+    <div class="lbl">Pick a time · booking link</div>
+    <div class="cal">
+      <div class="d">Tue</div><div class="d">Wed</div><div class="d">Thu</div><div class="d">Fri</div>
+      <div class="sl busy">8:00</div><div class="sl">8:00</div><div class="sl busy">8:00</div><div class="sl busy">8:00</div>
+      <div class="sl busy">10:00</div><div class="sl busy">10:00</div><div class="sl" id="pick">10:00</div><div class="sl">10:00</div>
+      <div class="sl">1:00</div><div class="sl busy">1:00</div><div class="sl busy">1:00</div><div class="sl">1:00</div>
+      <div class="sl busy">3:00</div><div class="sl">3:00</div><div class="sl">3:00</div><div class="sl busy">3:00</div>
+    </div>
+    <div id="booked" style="position:absolute;left:44px;bottom:44px;font-size:38px;font-weight:800;color:var(--ok)">✓ Thu 10:00 AM booked</div>
+  </div>
+
+  <div class="st" id="c6">
+    <div class="lbl">Job sheet · sent to tech</div>
+    <div style="height:24px"></div>
+    <div class="row"><span>Customer</span><b>Dana R.</b></div>
+    <div class="row"><span>Job</span><b>Furnace replacement quote</b></div>
+    <div class="row"><span>Equipment</span><b>Gas furnace, ~18 yrs</b></div>
+    <div class="row"><span>When</span><b>Thu 10:00 AM</b></div>
+    <div id="sent">✓ On the tech's phone</div>
+  </div>
+
+  <div class="st" id="c7">
+    <div class="lbl">Callbacks you made</div>
+    <div class="big disp"><em>Zero.</em></div>
+  </div>
+
+  <div class="st" id="c8">
+    <div class="lbl">Want this workflow?</div>
+    <div class="q disp">QUOTE</div>
+    <div class="l">Comment the word and I'll send it to you.</div>
+  </div>
+</div>
+
+<div id="loop" class="disp">So stop calling quotes back tomorrow.</div>
+<div id="ripple"></div>
+<svg id="cursor" viewBox="0 0 24 24"><path d="M4 2l16 9-7 2-3 7z" fill="#f3f1ea" stroke="#0d0e0b" stroke-width="1.5" stroke-linejoin="round"/></svg>
+<div id="cap"></div>
+<script src="../../engine/base.js"></script>
+<script>
+const DUR=26.5;
+const CAP=[[0,"Stop calling quotes back tomorrow."],[1.5,"Watch this instead."],[3,"7:42pm. A homeowner fills in your quote form."],
+[6,"One minute later, your business texts them."],[9,"Two questions. What system? How old?"],[12,"Hot lead? They get your booking link."],
+[14.5,"They pick Thursday, 10am. It's on your calendar."],[17.5,"Your tech has the details before leaving the shop."],
+[20.5,"Nobody called anyone back."],[22,"Comment QUOTE for the workflow."],[24,"So stop calling quotes back tomorrow."]];
+// state windows [id, start, end]
+const ST=[["c0",0,3],["c1",3,6],["c2",6,12],["c4",12,14.5],["c5",14.5,17.5],["c6",17.5,20.5],["c7",20.5,22],["c8",22,DUR+1]];
+// card geometry keys: [t, x, y, w, h, r]
+const G=[[0,70,1080,780,130,65],[3,70,360,780,840,40],[6,150,330,620,920,56],[12,70,520,780,560,40],[14.5,70,360,780,840,40],[17.5,110,400,700,760,32],[20.5,70,560,780,380,40],[22,70,330,780,640,48]];
+const geo=(t,i)=>track(t,G.map(g=>[g[0],g[i]]));
+const HOOK=["Stop","calling","quotes","back","<span class=a>tomorrow.</span>"];
+const $=id=>document.getElementById(id);
+$("hook").innerHTML=HOOK.map(w=>`<span>${w}</span>`).join(" ");
+const hookWords=[...$("hook").children];
+function type(el,txt,a,b,t){const n=Math.floor(clamp((t-a)/(b-a))*txt.length);el.textContent=txt.slice(0,n);}
+// cursor path keys
+const CX=[[0,980],[3.6,980],[4.0,420],[4.55,460],[14.6,980],[15.0,540],[15.5,540]];
+const CY=[[0,1500],[3.6,1500],[4.0,520],[4.55,1110],[14.6,1500],[15.0,650],[15.5,650]];
+// audio events (beat-aligned)
+const EV=[];ST.slice(1).forEach(s=>EV.push([s[1]-0.12,"whoosh"]));
+[0,0.5,1,1.5,2].forEach(x=>EV.push([x,"tick"]));
+for(let x=3.4;x<4.6;x+=0.09)EV.push([x,"tick"]);
+EV.push([5.0,"tick"],[5.05,"confirm"],[6.6,"pop"],[9.0,"pop"],[9.5,"pop"],[10.5,"pop"],[11.0,"pop"],[12.5,"confirm"],[15.5,"tick"],[15.6,"confirm"],[18.8,"pop"],[20.6,"hit"],[22.2,"hit"]);
+window.EVENTS=EV.filter(e=>e[0]<DUR);window.BPM=120;window.DRUMS_FROM=3.0;
+window.SHEET=[1.0,5.15,15.3,15.6,22.8,25];
+function seek(t){
+  $("bar").style.width=(t/DUR*1080)+"px";
+  // hook words spring in on beats, leave before the card morphs
+  hookWords.forEach((w,i)=>{const p=spring(t,i*0.5)*clamp((2.85-t)/.2);w.style.opacity=clamp(p);w.style.transform=`translateY(${(1-p)*60}px)`;});
+  // card
+  const x=geo(t,1),y=geo(t,2),w=geo(t,3),h=geo(t,4),r=geo(t,5);
+  const c=$("card");Object.assign(c.style,{left:x+"px",top:y+"px",width:w+"px",height:h+"px",borderRadius:r+"px"});
+  const ctaP=spring(t,22);c.style.background=mixColor("#171814","#ff5a1f",ctaP);c.style.borderColor=ctaP>.5?"transparent":"#2a2b26";
+  c.style.opacity=clamp(spring(t,0.2));
+  for(const [id,a,b] of ST) setv($(id),win(t,a,b),20);
+  // s0 strike appears
+  $("c0").querySelector("s").style.textDecorationLine=t>1.6?"line-through":"none";
+  // s1 typing
+  type($("f1"),"Dana R.",3.4,3.9,t);type($("f2"),"Furnace replacement",3.9,4.5,t);type($("f3"),"M4C",4.5,4.75,t);
+  const press=clamp(1-Math.abs(t-5.0)/.12);$("sub").style.transform=`scale(${1-press*.04})`;$("sub").style.background=t>5.0?"#c8f03c":"#f3f1ea";
+  if(t>5.0)$("sub").textContent="✓ Sent 7:42 PM";else $("sub").textContent="Request a quote";
+  // s2 messages
+  [["ts1",6.4],["m1",6.6],["m2",9.0],["m3",9.5],["m4",10.5],["m5",11.0]].forEach(([id,a])=>setv($(id),clamp(spring(t,a)),24,false));
+  // s4 meter
+  $("fill").style.width=(clamp(spring(t,12.5,1.6))*92)+"%";
+  // s5 pick
+  const pk=t>15.5;$("pick").style.background=pk?"#c8f03c":"transparent";$("pick").style.color=pk?"#0d0e0b":"#8d8b82";$("pick").style.borderColor=pk?"#c8f03c":"#2a2b26";
+  setv($("booked"),clamp(spring(t,15.7)),20,false);
+  setv($("sent"),clamp(spring(t,18.8)),20,false);
+  // loop line
+  setv($("loop"),clamp(spring(t,24)),30);
+  // cursor
+  const cur=$("cursor"),cx=track(t,CX),cy=track(t,CY);
+  const cvis=(t>3.5&&t<5.8)||(t>14.5&&t<16.6);cur.style.opacity=cvis?1:0;cur.style.left=cx+"px";cur.style.top=cy+"px";
+  const rp=[5.0,15.5].map(a=>clamp((t-a)/.4)).find(v=>v>0&&v<1)||0;const rt=t<10?5.0:15.5;
+  const rip=$("ripple");rip.style.opacity=rp?(1-rp)*.8:0;const RP=rt===5.0?[468,1118]:[548,658];rip.style.left=(RP[0]-60)+"px";rip.style.top=(RP[1]-60)+"px";rip.style.transform=`scale(${.4+rp})`;
+  captions($("cap"),CAP,t,DUR,[0,1,10]);
+}
+window.seek=seek;window.DUR=DUR;seek(0);
+</script></body></html>

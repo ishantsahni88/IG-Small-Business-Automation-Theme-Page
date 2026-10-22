@@ -1,0 +1,10 @@
+{
+ "id": "ep002-hvac-quotes-overnight",
+ "date": "2026-10-28",
+ "hook": "Stop calling quotes back tomorrow. Watch this instead.",
+ "formula": "Negative Command",
+ "keyword": "QUOTE",
+ "caption": "A quote request that sits overnight can easily go to whoever answers first. This flow texts the homeowner within a minute, asks two questions, and sends hot leads straight to your calendar. Your tech has the job sheet before leaving the shop.",
+ "cover_t": 2.5,
+ "hashtag_set": 0
+}
