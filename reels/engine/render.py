@@ -38,7 +38,12 @@ def sheet(src, out, times=None):
     for f in files: args += ["-i", f]
     for r, row in enumerate(rows):
         ins = "".join(f"[{r * cols + c}]" for c in range(len(row)))
-        filt.append(f"{ins}hstack={len(row)},pad={1080 * cols}:1920[r{r}]" if len(row) < cols else f"{ins}hstack={cols}[r{r}]")
+        if len(row) == 1:
+            filt.append(f"{ins}pad={1080 * cols}:1920[r{r}]")
+        elif len(row) < cols:
+            filt.append(f"{ins}hstack={len(row)},pad={1080 * cols}:1920[r{r}]")
+        else:
+            filt.append(f"{ins}hstack={cols}[r{r}]")
         labels.append(f"[r{r}]")
     filt.append("".join(labels) + (f"vstack={len(rows)}" if len(rows) > 1 else "copy") + ",scale=1800:-1")
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", *args, "-filter_complex", ";".join(filt), out], check=True)

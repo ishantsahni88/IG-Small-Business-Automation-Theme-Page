@@ -91,7 +91,9 @@ def main(ep, only_check=False, no_render=False):
     from render import render
     mdir = os.path.join(ROOT, "media", BRAND, "reels"); os.makedirs(mdir, exist_ok=True)
     mp4, jpg = os.path.join(mdir, f"{meta['id']}.mp4"), os.path.join(mdir, f"{meta['id']}.jpg")
-    if no_render and os.path.exists(mp4) and os.path.exists(jpg):
+    if meta.get("media_url"):  # finished video hosted elsewhere (e.g. a voiced mix made in the Higgsfield sandbox)
+        dur = meta.get("seconds", meta["_seconds"])
+    elif no_render and os.path.exists(mp4) and os.path.exists(jpg):
         dur = meta["_seconds"]
     else:
         dur = render(os.path.join(ep, "index.html"), mp4, meta.get("cover_t", 0.6), jpg)
@@ -99,7 +101,7 @@ def main(ep, only_check=False, no_render=False):
     info = {
         "autoPublish": True, "draft": False, "descendants": [], "firstCommentText": "", "hasNotReadNotes": False,
         "providers": [{"network": "instagram"}],
-        "media": [f"{RAW}media/{BRAND}/reels/{meta['id']}.mp4?v={ver}"],
+        "media": [meta.get("media_url") or f"{RAW}media/{BRAND}/reels/{meta['id']}.mp4?v={ver}"],
         "videoThumbnailUrl": f"{RAW}media/{BRAND}/reels/{meta['id']}.jpg?v={ver}",
         "mediaAltText": [], "shortener": False, "smartLinkData": {"ids": []},
         "publicationDate": {"dateTime": f"{meta['date']}T{brand['reelTime']}", "timezone": brand["timezone"]},
