@@ -1,0 +1,13 @@
+{
+ "id": "ep005-physio-rebook-text",
+ "date": "2026-11-04",
+ "hook": "Stop phoning patients to rebook. Watch one text fill the gap.",
+ "keyword": "REBOOK",
+ "seconds": 31,
+ "hook_score": 78.8,
+ "args": {
+  "blogId": "",
+  "date": "2026-11-04T12:30:00",
+  "info": "{\"autoPublish\": true, \"draft\": false, \"descendants\": [], \"firstCommentText\": \"\", \"hasNotReadNotes\": false, \"providers\": [{\"network\": \"instagram\"}], \"media\": [\"https://raw.githubusercontent.com/ishantsahni88/ig-small-business-automation-theme-page/main/media/small-business-automation/reels/ep005-physio-rebook-text.mp4?v=20261104\"], \"videoThumbnailUrl\": \"https://raw.githubusercontent.com/ishantsahni88/ig-small-business-automation-theme-page/main/media/small-business-automation/reels/ep005-physio-rebook-text.jpg?v=20261104\", \"mediaAltText\": [], \"shortener\": false, \"smartLinkData\": {\"ids\": []}, \"publicationDate\": {\"dateTime\": \"2026-11-04T12:30:00\", \"timezone\": \"America/Toronto\"}, \"text\": \"Stop phoning patients to rebook. Watch one text fill the gap.\\n\\nPatients who leave without a next visit booked often just forget, and the front desk rarely has time to chase them. Each one gets a text with the next visit their physio already planned and a link to pick a time, plus one friendly nudge if they don't reply. It's scheduling admin only: your clinicians decide the care plan.\\n\\nComment REBOOK and I'll send you the workflow.\\n.\\n#automatesmallbusiness #practiceautomation #dentalpractice #physiotherapy #clinicowner\", \"instagramData\": {\"type\": \"REEL\", \"showReelOnFeed\": true, \"isAiGenerated\": false}}"
+ }
+}

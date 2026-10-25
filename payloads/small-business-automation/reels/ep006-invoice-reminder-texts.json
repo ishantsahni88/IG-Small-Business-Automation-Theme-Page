@@ -1,0 +1,13 @@
+{
+ "id": "ep006-invoice-reminder-texts",
+ "date": "2026-11-06",
+ "hook": "Stop chasing invoices by phone. Watch this text get you paid.",
+ "keyword": "PAID",
+ "seconds": 32,
+ "hook_score": 85.6,
+ "args": {
+  "blogId": "",
+  "date": "2026-11-06T12:30:00",
+  "info": "{\"autoPublish\": true, \"draft\": false, \"descendants\": [], \"firstCommentText\": \"\", \"hasNotReadNotes\": false, \"providers\": [{\"network\": \"instagram\"}], \"media\": [\"https://raw.githubusercontent.com/ishantsahni88/ig-small-business-automation-theme-page/main/media/small-business-automation/reels/ep006-invoice-reminder-texts.mp4?v=20261106\"], \"videoThumbnailUrl\": \"https://raw.githubusercontent.com/ishantsahni88/ig-small-business-automation-theme-page/main/media/small-business-automation/reels/ep006-invoice-reminder-texts.jpg?v=20261106\", \"mediaAltText\": [], \"shortener\": false, \"smartLinkData\": {\"ids\": []}, \"publicationDate\": {\"dateTime\": \"2026-11-06T12:30:00\", \"timezone\": \"America/Toronto\"}, \"text\": \"Stop chasing invoices by phone. Watch this text get you paid.\\n\\nChasing unpaid invoices is the job every owner puts off until Friday night. Each overdue invoice gets a polite text with a pay-by-card link, then one shorter reminder, and the reminders stop the moment it's paid. Only the ones still open after two weeks ever reach your desk.\\n\\nComment PAID and I'll send you the workflow.\\n.\\n#automatesmallbusiness #smallbusinessautomation #aiautomation #workflowautomation #smallbusinessowner\", \"instagramData\": {\"type\": \"REEL\", \"showReelOnFeed\": true, \"isAiGenerated\": false}}"
+ }
+}

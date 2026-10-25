@@ -1,0 +1,110 @@
+[
+ {
+  "date": "2026-10-26",
+  "template": "workflow",
+  "fields": {
+   "industry": "PLUMBING",
+   "title": "The after-hours call that books itself",
+   "steps": [
+    "Caller rings after 6pm",
+    "AI asks: emergency or routine?",
+    "Burst pipe texts the on-call tech",
+    "Routine job gets a morning slot",
+    "Call summary lands in your CRM"
+   ],
+   "before": "Voicemail at 9pm, callback at 10am",
+   "after": "Every caller answered and sorted tonight"
+  },
+  "caption": "Most after-hours calls aren't emergencies, but you can't tell from a voicemail. Let the first question do the sorting, so only real emergencies reach your phone tonight."
+ },
+ {
+  "date": "2026-10-27",
+  "template": "workflow",
+  "fields": {
+   "industry": "PHYSIO",
+   "title": "Intake forms done before the first visit",
+   "steps": [
+    "New patient books online",
+    "Intake form link sent by text",
+    "Reminder if it's not back in 24h",
+    "Answers filed to the booking",
+    "Front desk sees what's missing"
+   ],
+   "before": "Clipboards and typing at the front desk",
+   "after": "Paperwork done before they walk in"
+  },
+  "caption": "The first visit shouldn't start with ten minutes of paperwork. This is scheduling and admin only: the form collects contact and booking details, and your clinicians handle everything clinical."
+ },
+ {
+  "date": "2026-10-28",
+  "template": "statement",
+  "fields": {
+   "headline": "Automate the task you *repeat every single day* first.",
+   "sub": "Not the fanciest one, the one your office does on autopilot already."
+  },
+  "caption": "The best first automation is usually boring. Confirmations, callbacks, reminders. Pick the task your team could do in their sleep and let a workflow take it."
+ },
+ {
+  "date": "2026-10-29",
+  "template": "workflow",
+  "fields": {
+   "industry": "HVAC",
+   "title": "Quotes that follow up without you",
+   "steps": [
+    "Quote emailed to the homeowner",
+    "Day 2: short check-in text",
+    "Day 5: answer common questions",
+    "Reply yes and it books the install",
+    "No reply? Flagged for one call"
+   ],
+   "before": "Quotes sent, then forgotten in the inbox",
+   "after": "Every quote gets a polite follow-up"
+  },
+  "caption": "A quote with no follow-up is a coin toss. Two light touches and a booking link keep the job warm, and you only pick up the phone for the quiet ones."
+ },
+ {
+  "date": "2026-10-30",
+  "template": "workflow",
+  "fields": {
+   "industry": "ROOFING",
+   "title": "Ask for the review while the job's fresh",
+   "steps": [
+    "Crew marks the job complete",
+    "Next morning: thank-you text",
+    "Text includes your review link",
+    "Complaint replies alert the office",
+    "Owner sees replies in one list"
+   ],
+   "before": "Reviews only when someone remembers to ask",
+   "after": "Every finished roof gets a review ask"
+  },
+  "caption": "Happy customers rarely leave reviews on their own. A short text the morning after the job asks at the right moment, and if someone replies with a problem, the office hears about it right away."
+ },
+ {
+  "date": "2026-10-31",
+  "template": "statement",
+  "fields": {
+   "headline": "Your customers don't want an app. They want *a fast reply.*",
+   "sub": "A text back in a minute beats a perfect portal nobody logs into."
+  },
+  "caption": "Small businesses win on speed and simplicity. Before buying another tool, ask how fast a new customer hears back from you, and start there."
+ },
+ {
+  "date": "2026-11-01",
+  "template": "workflow",
+  "fields": {
+   "industry": "DENTAL",
+   "title": "Recall reminders that fill next month",
+   "steps": [
+    "Patient is due for a cleaning",
+    "Text with your booking link",
+    "Booked? Calendar updates itself",
+    "No reply in a week? Second text",
+    "Front desk calls the last few"
+   ],
+   "before": "A recall list nobody has time to call",
+   "after": "Patients book recalls from a text"
+  },
+  "caption": "Recall lists tend to sit until someone has a slow afternoon. A text with a booking link does the first pass, and your team only phones the people who didn't answer. Scheduling admin only."
+ }
+]

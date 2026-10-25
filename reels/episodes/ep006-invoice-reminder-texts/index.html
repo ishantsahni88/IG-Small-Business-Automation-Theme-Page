@@ -1,0 +1,132 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+:root{--bg:#0d0e0b;--ink:#f3f1ea;--mute:#8d8b82;--line:#2a2b26;--acc:#ff5a1f;--ok:#c8f03c;--card:#171814}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--bg);color:var(--ink);font-family:Inter,sans-serif}
+.grid{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:90px 90px;opacity:.3}
+.disp{font-family:"Inter Display",Inter,sans-serif;font-weight:800;letter-spacing:-.03em;line-height:.95}
+#bar{position:absolute;left:0;top:0;height:10px;background:var(--acc)}
+#hook{position:absolute;left:70px;top:380px;width:780px;font-size:136px}
+#hook span{display:inline-block}#hook .a{color:var(--acc)}
+#card{position:absolute;overflow:hidden;border:2px solid var(--line)}
+.st{position:absolute;inset:0;padding:44px}
+.lbl{font-size:28px;font-weight:700;letter-spacing:.16em;color:var(--mute);text-transform:uppercase}
+#c0{display:flex;align-items:center;gap:24px;padding:0 44px}
+#c0 .tm{font-size:40px;font-weight:800}
+#c0 .nm{font-size:36px;color:var(--mute);font-weight:600}
+#c0 .chip{margin-left:auto;font-size:28px;font-weight:800;color:var(--bg);background:var(--acc);padding:12px 22px;border-radius:24px;white-space:nowrap}
+.inv h2{font-size:84px;margin:22px 0 18px}
+.kv{display:flex;justify-content:space-between;align-items:center;border-top:2px solid var(--line);padding:24px 0;font-size:38px}
+.kv span{color:var(--mute);font-weight:600}.kv b{font-weight:800}
+.tag{font-size:28px;font-weight:800;padding:10px 20px;border-radius:20px;border:2px solid var(--line);color:var(--mute);white-space:nowrap}
+.sms-h{display:flex;align-items:center;gap:20px;border-bottom:2px solid var(--line);padding-bottom:28px}
+.av{width:76px;height:76px;border-radius:50%;background:var(--ok);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:30px;color:var(--bg)}
+.sms-h b{font-size:38px}.sms-h span{display:block;font-size:26px;color:var(--mute);font-weight:600;margin-top:4px}
+.bub{position:absolute;max-width:470px;font-size:36px;font-weight:600;line-height:1.25;padding:24px 30px;border-radius:32px}
+.in{left:44px;background:#26271f;border-bottom-left-radius:8px}
+.lnk{color:var(--ok);text-decoration:underline;font-weight:800}
+.ts{position:absolute;left:0;right:0;text-align:center;font-size:24px;color:var(--mute);font-weight:600}
+#c3 h2{font-size:72px;margin:20px 0 8px}
+#c3 .sub{font-size:34px;color:var(--mute);font-weight:600}
+#pay{position:absolute;left:44px;right:44px;top:300px;height:110px;border-radius:24px;display:flex;align-items:center;justify-content:center;font-size:42px;font-weight:800;border:3px solid var(--ok);color:var(--ok)}
+#c5 .big{font-size:120px;margin:22px 0 18px}#c5 .big em{font-style:normal;color:var(--acc)}
+#c6 .q{font-size:200px;color:var(--bg);margin-top:30px}
+#c6 .l{font-size:52px;font-weight:800;color:var(--bg);margin-top:30px;line-height:1.1}
+#c6 .lbl{color:rgba(13,14,11,.65)}
+#loop{position:absolute;left:70px;top:1010px;width:780px;font-size:76px}
+#cursor{position:absolute;width:56px;height:56px}
+#ripple{position:absolute;width:120px;height:120px;border-radius:50%;border:4px solid var(--ink)}
+#cap{position:absolute;left:70px;width:780px;top:1290px;font-size:46px;font-weight:700;line-height:1.2}
+#cap .w{opacity:.35}#cap .w.on{opacity:1}
+</style></head>
+<body>
+<div class="grid"></div><div id="bar"></div>
+<div id="hook" class="disp"></div>
+<div id="card">
+  <div class="st" id="c0"><div class="tm">INV 1042</div><div class="nm">Due Fri</div><div class="chip">UNPAID</div></div>
+
+  <div class="st inv" id="c1">
+    <div class="lbl">Invoice</div>
+    <h2 class="disp">1042</h2>
+    <div class="kv"><span>Customer</span><b>Mark O.</b></div>
+    <div class="kv"><span>Due</span><b>Friday</b></div>
+    <div class="kv"><span>Status</span><i class="tag" id="st1" style="font-style:normal">SENT</i></div>
+  </div>
+
+  <div class="st" id="c2">
+    <div class="sms-h"><div class="av">YB</div><div><b>Your Business</b><span>To Mark O.</span></div></div>
+    <div class="ts" style="top:170px">Mon 9:00 AM</div>
+    <div class="bub in" style="top:220px" id="m1">Hi Mark, here's invoice 1042 from Your Business. You can pay by card here:</div>
+    <div class="bub in" style="top:470px" id="m2"><span class="lnk">pay.link/1042</span></div>
+    <div class="ts" style="top:600px" id="m3t">Thu 9:00 AM</div>
+    <div class="bub in" style="top:650px" id="m3">Quick reminder: 1042 is still open. Link's above whenever you're ready.</div>
+  </div>
+
+  <div class="st" id="c3">
+    <div class="lbl">Secure payment</div>
+    <h2 class="disp">Invoice 1042</h2>
+    <div class="sub">Your Business · Mark O.</div>
+    <div id="pay">Pay by card</div>
+  </div>
+
+  <div class="st" id="c4">
+    <div class="lbl">Your books</div>
+    <div class="kv" style="margin-top:26px"><b>INV 1040</b><i class="tag" style="font-style:normal;background:#c8f03c;color:#0d0e0b;border-color:#c8f03c">PAID</i></div>
+    <div class="kv"><b>INV 1041</b><i class="tag" style="font-style:normal;background:#c8f03c;color:#0d0e0b;border-color:#c8f03c">PAID</i></div>
+    <div class="kv"><b>INV 1042</b><i class="tag" id="p42" style="font-style:normal">UNPAID</i></div>
+    <div class="kv"><span>Reminders for 1042</span><i class="tag" id="rem" style="font-style:normal">ON</i></div>
+  </div>
+
+  <div class="st" id="c5">
+    <div class="lbl">Still unpaid at 2 weeks</div>
+    <div class="big disp">Your <em>desk.</em></div>
+    <div class="kv" id="k5"><b>INV 1057 · K. Hale</b><i class="tag" style="font-style:normal;color:#ff5a1f;border-color:#ff5a1f">CALL</i></div>
+  </div>
+
+  <div class="st" id="c6"><div class="lbl">Want this workflow?</div><div class="q disp">PAID</div><div class="l">Comment the word and I'll send it to you.</div></div>
+</div>
+<div id="loop" class="disp">Paid without picking up the phone.</div>
+<div id="ripple"></div>
+<svg id="cursor" viewBox="0 0 24 24"><path d="M4 2l16 9-7 2-3 7z" fill="#f3f1ea" stroke="#0d0e0b" stroke-width="1.5" stroke-linejoin="round"/></svg>
+<div id="cap"></div>
+<script src="../../engine/base.js"></script>
+<script>
+const DUR=32;
+const CAP=[[0,"Stop chasing invoices by phone."],[1.8,"Watch this text get you paid."],[4,"Invoice 1042. Due Friday. Nothing yet."],
+[6.2,"Monday morning, Mark gets a polite text."],[8.7,"Here's your invoice, and a link to pay by card."],[12.4,"No payment by Thursday? One shorter reminder."],
+[14.9,"Mark taps the link and pays from his phone."],[18.2,"Your books mark it paid. The reminders stop."],[21.1,"Still unpaid at two weeks?"],
+[22.9,"That's when it lands on your desk. Not before."],[26.2,"Comment PAID for the workflow."],[28,"Next invoice, you get paid without picking up the phone."]];
+const ST=[["c0",0,4],["c1",4,6.2],["c2",6.2,14.9],["c3",14.9,18.2],["c4",18.2,21.1],["c5",21.1,26.2],["c6",26.2,DUR+1]];
+const G=[[0,70,1080,780,130,65],[4,70,400,780,560,40],[6.2,150,330,620,910,56],[14.9,150,400,620,500,56],[18.2,70,400,780,580,40],[21.1,70,440,780,420,40],[26.2,70,330,780,640,48]];
+const geo=(t,i)=>track(t,G.map(g=>[g[0],g[i]]));
+const $=id=>document.getElementById(id);
+const HOOK=["Stop","chasing","<span class=a>invoices</span>","by","phone."];
+$("hook").innerHTML=HOOK.map(w=>`<span>${w}</span>`).join(" ");const hw=[...$("hook").children];
+const CX=[[0,980],[15.2,980],[15.6,450],[16.4,450]],CY=[[0,1500],[15.2,1500],[15.6,742],[16.4,742]];
+const EV=[];ST.slice(1).forEach(s=>EV.push([s[1]-0.12,"whoosh"]));
+[0,0.5,1,1.5,2].forEach(x=>EV.push([x,"tick"]));
+EV.push([5.2,"pop"],[6.7,"pop"],[9.2,"pop"],[12.8,"pop"],[16.4,"tick"],[16.7,"confirm"],[18.7,"confirm"],[19.6,"tick"],[21.5,"pop"],[23.2,"hit"],[26.4,"hit"],[28,"tick"]);
+window.EVENTS=EV;window.BPM=120;window.DRUMS_FROM=4.0;
+window.SHEET=[0.9,2.6,5.5,7.5,10.5,13.8,16.3,17.2,20.2,24.0,27.0,29.5];
+function tag(e,txt,col){e.textContent=txt;e.style.background=col||"transparent";e.style.color=col?"#0d0e0b":"#8d8b82";e.style.borderColor=col||"#2a2b26";}
+function seek(t){
+  $("bar").style.width=(t/DUR*1080)+"px";
+  hw.forEach((w,i)=>{const p=spring(t,i*0.35)*clamp((3.85-t)/.2);w.style.opacity=clamp(p);w.style.transform=`translateY(${(1-p)*60}px)`;});
+  const c=$("card");Object.assign(c.style,{left:geo(t,1)+"px",top:geo(t,2)+"px",width:geo(t,3)+"px",height:geo(t,4)+"px",borderRadius:geo(t,5)+"px"});
+  const cp=spring(t,26.2);c.style.background=mixColor("#171814","#ff5a1f",cp);c.style.borderColor=cp>.5?"transparent":"#2a2b26";c.style.opacity=clamp(spring(t,.2));
+  for(const [id,a,b] of ST) setv($(id),win(t,a,b),20);
+  const s1=$("st1");if(t>=5.2)tag(s1,"UNPAID","#ff5a1f");else tag(s1,"SENT");
+  [["m1",6.7],["m2",9.2],["m3t",12.6],["m3",12.8]].forEach(([id,a])=>setv($(id),clamp(spring(t,a)),24,false));
+  const pd=t>=16.5,p=$("pay");p.textContent=pd?"✓ Paid":"Pay by card";p.style.background=pd?"#c8f03c":"transparent";p.style.color=pd?"#0d0e0b":"#c8f03c";
+  p.style.transform=`scale(${1-.04*Math.max(0,1-Math.abs(t-16.4)/.15)})`;
+  if(t>=18.7)tag($("p42"),"PAID","#c8f03c");else{tag($("p42"),"UNPAID");$("p42").style.color="#ff5a1f";$("p42").style.borderColor="#ff5a1f";}
+  if(t>=19.6)tag($("rem"),"STOPPED","#c8f03c");else tag($("rem"),"ON");
+  setv($("k5"),clamp(spring(t,23.2)),20,false);
+  setv($("loop"),clamp(spring(t,28)),30);
+  const cur=$("cursor");cur.style.opacity=(t>15.4&&t<17.2)?1:0;cur.style.left=track(t,CX)+"px";cur.style.top=track(t,CY)+"px";
+  const rp=clamp((t-16.4)/.4),rip=$("ripple");rip.style.opacity=(rp>0&&rp<1)?(1-rp)*.8:0;rip.style.left=(460-60)+"px";rip.style.top=(755-60)+"px";rip.style.transform=`scale(${.4+rp})`;
+  captions($("cap"),CAP,t,DUR,[0,1,10,11]);
+}
+window.seek=seek;window.DUR=DUR;seek(0);
+</script></body></html>

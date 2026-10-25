@@ -1,6 +1,6 @@
 {
  "id": "ep004-roofing-storm-photos",
- "date": "2026-10-22",
+ "date": "2026-11-02",
  "hook": "Stop driving to every storm call. Let the photo decide who's first.",
  "formula": "Negative Command",
  "keyword": "STORM",

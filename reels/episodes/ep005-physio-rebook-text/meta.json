@@ -1,0 +1,10 @@
+{
+ "id": "ep005-physio-rebook-text",
+ "date": "2026-11-04",
+ "hook": "Stop phoning patients to rebook. Watch one text fill the gap.",
+ "formula": "Negative Command",
+ "keyword": "REBOOK",
+ "caption": "Patients who leave without a next visit booked often just forget, and the front desk rarely has time to chase them. Each one gets a text with the next visit their physio already planned and a link to pick a time, plus one friendly nudge if they don't reply. It's scheduling admin only: your clinicians decide the care plan.",
+ "cover_t": 14.9,
+ "hashtag_set": 1
+}

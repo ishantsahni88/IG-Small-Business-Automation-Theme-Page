@@ -1,0 +1,10 @@
+{
+ "id": "ep006-invoice-reminder-texts",
+ "date": "2026-11-06",
+ "hook": "Stop chasing invoices by phone. Watch this text get you paid.",
+ "formula": "Negative Command",
+ "keyword": "PAID",
+ "caption": "Chasing unpaid invoices is the job every owner puts off until Friday night. Each overdue invoice gets a polite text with a pay-by-card link, then one shorter reminder, and the reminders stop the moment it's paid. Only the ones still open after two weeks ever reach your desk.",
+ "cover_t": 17.5,
+ "hashtag_set": 2
+}

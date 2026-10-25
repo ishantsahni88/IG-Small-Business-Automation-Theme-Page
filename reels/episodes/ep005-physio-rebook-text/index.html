@@ -1,0 +1,132 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+:root{--bg:#0d0e0b;--ink:#f3f1ea;--mute:#8d8b82;--line:#2a2b26;--acc:#ff5a1f;--ok:#c8f03c;--card:#171814}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--bg);color:var(--ink);font-family:Inter,sans-serif}
+.grid{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:90px 90px;opacity:.3}
+.disp{font-family:"Inter Display",Inter,sans-serif;font-weight:800;letter-spacing:-.03em;line-height:.95}
+#bar{position:absolute;left:0;top:0;height:10px;background:var(--acc)}
+#hook{position:absolute;left:70px;top:380px;width:780px;font-size:136px}
+#hook span{display:inline-block}#hook .a{color:var(--acc)}
+#card{position:absolute;overflow:hidden;border:2px solid var(--line)}
+.st{position:absolute;inset:0;padding:44px}
+.lbl{font-size:28px;font-weight:700;letter-spacing:.16em;color:var(--mute);text-transform:uppercase}
+#c0{display:flex;align-items:center;gap:24px;padding:0 44px}
+#c0 .tm{font-size:40px;font-weight:800}
+#c0 .nm{font-size:36px;color:var(--mute);font-weight:600}
+#c0 .chip{margin-left:auto;font-size:28px;font-weight:800;color:var(--bg);background:var(--acc);padding:12px 22px;border-radius:24px;white-space:nowrap}
+.ls .r{display:grid;grid-template-columns:1fr 150px 220px;align-items:center;border-top:2px solid var(--line);padding:26px 0;font-size:38px}
+.ls .r:first-of-type{margin-top:26px}
+.ls .r b{font-weight:800}
+.ls .r span{color:var(--mute);font-weight:600;font-size:30px}
+.ls .r i{font-style:normal;font-size:26px;font-weight:800;text-align:center;padding:10px 0;border-radius:20px;color:var(--mute);border:2px solid var(--line)}
+.sms-h{display:flex;align-items:center;gap:20px;border-bottom:2px solid var(--line);padding-bottom:28px}
+.av{width:76px;height:76px;border-radius:50%;background:var(--ok);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:30px;color:var(--bg)}
+.sms-h b{font-size:38px}.sms-h span{display:block;font-size:26px;color:var(--mute);font-weight:600;margin-top:4px}
+.bub{position:absolute;max-width:460px;font-size:36px;font-weight:600;line-height:1.25;padding:24px 30px;border-radius:32px}
+.in{left:44px;background:#26271f;border-bottom-left-radius:8px}
+.out{right:44px;background:var(--ok);color:var(--bg);border-bottom-right-radius:8px;font-weight:800}
+.ts{position:absolute;left:0;right:0;text-align:center;font-size:24px;color:var(--mute);font-weight:600}
+.chips{position:absolute;left:44px;right:44px;display:flex;gap:14px}
+.chips span{flex:1;text-align:center;font-size:30px;font-weight:800;padding:20px 0;border-radius:20px;border:2px solid var(--line);color:#d9d6cc}
+#c4 .big{font-size:150px;margin:20px 0 6px;color:var(--acc)}
+#c4 .r{display:flex;justify-content:space-between;align-items:center;border-top:2px solid var(--line);padding:26px 0;font-size:38px;font-weight:700}
+#c4 .r em{font-style:normal;font-size:28px;font-weight:800;padding:10px 20px;border-radius:20px;border:2px solid var(--acc);color:var(--acc)}
+#c5 .big{font-size:110px;margin-top:22px}#c5 .big em{font-style:normal;color:var(--ok)}
+#c5 .nm{font-size:36px;font-weight:700;color:#d9d6cc;margin-top:24px}
+#c6 .q{font-size:170px;color:var(--bg);margin-top:30px}
+#c6 .l{font-size:52px;font-weight:800;color:var(--bg);margin-top:30px;line-height:1.1}
+#c6 .lbl{color:rgba(13,14,11,.65)}
+#loop{position:absolute;left:70px;top:1010px;width:780px;font-size:76px}
+#cursor{position:absolute;width:56px;height:56px}
+#ripple{position:absolute;width:120px;height:120px;border-radius:50%;border:4px solid var(--ink)}
+#cap{position:absolute;left:70px;width:780px;top:1290px;font-size:46px;font-weight:700;line-height:1.2}
+#cap .w{opacity:.35}#cap .w.on{opacity:1}
+</style></head>
+<body>
+<div class="grid"></div><div id="bar"></div>
+<div id="hook" class="disp"></div>
+<div id="card">
+  <div class="st" id="c0"><div class="tm">Fri 5:00</div><div class="nm">3 patients</div><div class="chip">NO NEXT VISIT</div></div>
+
+  <div class="st ls" id="c1">
+    <div class="lbl">Today · no next visit booked</div>
+    <div class="r"><b>P. Shah</b><span>Alex</span><i id="a0">TEXT</i></div>
+    <div class="r"><b>D. Roy</b><span>Alex</span><i id="a1">TEXT</i></div>
+    <div class="r"><b>L. Tran</b><span>Sam</span><i id="a2">TEXT</i></div>
+  </div>
+
+  <div class="st" id="c2">
+    <div class="sms-h"><div class="av">PC</div><div><b>Your Physio Clinic</b><span>To P. Shah</span></div></div>
+    <div class="ts" style="top:170px">Fri 5:00 PM</div>
+    <div class="bub in" style="top:220px" id="m1">Hi Priya, Alex set your follow-up for next week. Pick a time:</div>
+    <div class="chips" style="top:470px" id="m2"><span>Mon 9:00</span><span id="tue">Tue 4:00</span><span>Thu 11:30</span></div>
+    <div class="bub out" style="top:610px" id="m3">Booked: Tue 4:00 PM with Alex.</div>
+  </div>
+
+  <div class="st ls" id="c3">
+    <div class="lbl">Sunday · 2 days later</div>
+    <div class="r"><b>P. Shah</b><span>Tue 4:00</span><i id="b0">BOOKED</i></div>
+    <div class="r"><b>D. Roy</b><span id="dthu">no reply</span><i id="b1">NUDGE</i></div>
+    <div class="r"><b>L. Tran</b><span>no reply</span><i id="b2">NUDGE</i></div>
+  </div>
+
+  <div class="st" id="c4">
+    <div class="lbl">Front desk call list</div>
+    <div class="big disp">1</div>
+    <div class="r"><span>L. Tran · follow-up</span><em>CALL</em></div>
+  </div>
+
+  <div class="st" id="c5"><div class="lbl">Priya and Dan</div><div class="big disp"><em>Rebooked by text.</em></div></div>
+
+  <div class="st" id="c6"><div class="lbl">Want this workflow?</div><div class="q disp">REBOOK</div><div class="l">Comment the word and I'll send it to you.</div></div>
+</div>
+<div id="loop" class="disp">They rebook before you pick up the phone.</div>
+<div id="ripple"></div>
+<svg id="cursor" viewBox="0 0 24 24"><path d="M4 2l16 9-7 2-3 7z" fill="#f3f1ea" stroke="#0d0e0b" stroke-width="1.5" stroke-linejoin="round"/></svg>
+<div id="cap"></div>
+<script src="../../engine/base.js"></script>
+<script>
+const DUR=31;
+const CAP=[[0,"Stop phoning patients to rebook."],[1.8,"Watch one text fill the gap."],[4,"5pm Friday."],
+[4.7,"Three patients left today without a next visit booked."],[8,"Each one gets a text."],
+[9.8,"It's the follow-up Alex, your physio, already set. Here's your link."],[13.8,"Priya taps Tuesday at 4. Booked."],
+[16,"No reply in two days? One friendly nudge."],[18.9,"Dan books Thursday."],[20,"Lena lands on a front desk list of one."],
+[23.3,"Priya and Dan, rebooked by text."],[25.4,"Comment REBOOK for the workflow."],[27.3,"Next week, they rebook before you've picked up the phone."]];
+const ST=[["c0",0,4],["c1",4,9.8],["c2",9.8,16],["c3",16,20],["c4",20,23.3],["c5",23.3,25.4],["c6",25.4,DUR+1]];
+const G=[[0,70,1080,780,130,65],[4,70,420,780,440,40],[9.8,150,330,620,820,56],[16,70,420,780,440,40],[20,70,440,780,400,40],[23.3,70,520,780,380,40],[25.4,70,330,780,600,48]];
+const geo=(t,i)=>track(t,G.map(g=>[g[0],g[i]]));
+const $=id=>document.getElementById(id);
+const HOOK=["Stop","phoning","patients","to","<span class=a>rebook.</span>"];
+$("hook").innerHTML=HOOK.map(w=>`<span>${w}</span>`).join(" ");const hw=[...$("hook").children];
+const CX=[[0,980],[13.2,980],[13.7,450],[14.2,450]],CY=[[0,1500],[13.2,1500],[13.7,810],[14.2,810]];
+const EV=[];ST.slice(1).forEach(s=>EV.push([s[1]-0.12,"whoosh"]));
+[0,0.5,1,1.5,2].forEach(x=>EV.push([x,"tick"]));
+[5.2,5.6,6.0].forEach(x=>EV.push([x,"pop"]));
+[8.2,8.6,9.0].forEach(x=>EV.push([x,"confirm"]));
+EV.push([10.4,"pop"],[11.4,"pop"],[14.2,"tick"],[14.6,"confirm"]);
+[16.6,17.0].forEach(x=>EV.push([x,"pop"]));
+EV.push([19.0,"confirm"],[20.6,"pop"],[21.2,"tick"],[23.5,"confirm"],[25.6,"hit"],[27.3,"tick"]);
+window.EVENTS=EV;window.BPM=120;window.DRUMS_FROM=4.0;
+window.SHEET=[0.9,2.5,6.5,9.3,12.5,14.0,14.9,17.5,19.4,21.5,24.3,28.5];
+function chip(e,on,col){e.style.background=on?col:"transparent";e.style.color=on?"#0d0e0b":"#8d8b82";e.style.borderColor=on?col:"#2a2b26";}
+function seek(t){
+  $("bar").style.width=(t/DUR*1080)+"px";
+  hw.forEach((w,i)=>{const p=spring(t,i*0.35)*clamp((3.85-t)/.2);w.style.opacity=clamp(p);w.style.transform=`translateY(${(1-p)*60}px)`;});
+  const c=$("card");Object.assign(c.style,{left:geo(t,1)+"px",top:geo(t,2)+"px",width:geo(t,3)+"px",height:geo(t,4)+"px",borderRadius:geo(t,5)+"px"});
+  const cp=spring(t,25.4);c.style.background=mixColor("#171814","#ff5a1f",cp);c.style.borderColor=cp>.5?"transparent":"#2a2b26";c.style.opacity=clamp(spring(t,.2));
+  for(const [id,a,b] of ST) setv($(id),win(t,a,b),20);
+  [8.2,8.6,9.0].forEach((a,i)=>{const e=$("a"+i),on=t>=a;e.textContent=on?"SENT":"TEXT";chip(e,on,"#c8f03c");e.style.transform=`scale(${1+.12*Math.max(0,1-Math.abs(t-a)/.15)})`;});
+  [["m1",10.4],["m2",11.4],["m3",14.6]].forEach(([id,a])=>setv($(id),clamp(spring(t,a)),24,false));
+  const tu=$("tue"),on=t>14.2;tu.style.background=on?"#c8f03c":"transparent";tu.style.color=on?"#0d0e0b":"#d9d6cc";tu.style.borderColor=on?"#c8f03c":"#2a2b26";
+  chip($("b0"),true,"#c8f03c");
+  [["b1",16.6],["b2",17.0]].forEach(([id,a])=>{const e=$(id);chip(e,t>=a,"#ff5a1f");e.textContent=t>=a?"NUDGED":"NUDGE";});
+  const db=t>=19.0,b1=$("b1");if(db){b1.textContent="BOOKED";chip(b1,true,"#c8f03c");}$("dthu").textContent=db?"Thu 10:00":"no reply";
+  setv($("loop"),clamp(spring(t,27.3)),30);
+  const cur=$("cursor");cur.style.opacity=(t>13.1&&t<14.8)?1:0;cur.style.left=track(t,CX)+"px";cur.style.top=track(t,CY)+"px";
+  const rp=clamp((t-14.2)/.4),rip=$("ripple");rip.style.opacity=(rp>0&&rp<1)?(1-rp)*.8:0;rip.style.left=(460-60)+"px";rip.style.top=(830-60)+"px";rip.style.transform=`scale(${.4+rp})`;
+  captions($("cap"),CAP,t,DUR,[0,1,11,12]);
+}
+window.seek=seek;window.DUR=DUR;seek(0);
+</script></body></html>
